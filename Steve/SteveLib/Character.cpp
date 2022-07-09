@@ -1,0 +1,31 @@
+#include "pch.h"
+#include "Character.h"
+#include "Notification.h"
+
+Character::Character()
+{
+}
+
+Character::~Character()
+{
+}
+
+inline void Character::sendPlayerNotification(Notification notification)
+{
+	std::cout << notification.getNotificationMessage();
+}
+
+inline void Character::setMessage(Notification notification, std::string message)
+{
+	notification.setMessage(message);
+}
+
+inline std::string Character::askQuestion(std::string text)
+{
+	std::string response = "";
+
+	if (text == "hello?") response = "hello luv";
+	else response = "Bad choice bitzzz";
+
+	return response;
+}
