@@ -1,7 +1,10 @@
-﻿  Game.cpp
+﻿  pch.cpp
+  Game.cpp
   GameElement.cpp
   GameObject.cpp
   GameObjectRepos.cpp
+  InteractionType.cpp
   Scene.cpp
+  SteveLib.cpp
   Generating Code...
-  SteveLib.vcxproj -> E:\BTH - SkolGrejor\Software Design\game_mk2\Steve\x64\Debug\SteveLib.lib
+  SteveLib.vcxproj -> D:\School\ProggvaruDesign\Steve\x64\Debug\SteveLib.lib
