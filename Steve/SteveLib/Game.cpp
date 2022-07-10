@@ -1,12 +1,13 @@
 #include "pch.h"
 #include "Game.h"
 #include "Scene.h"
+#include "Inventory.h"
 #include "GameObject.h"
 
 Game::Game()
 {
-	currentScene = nullptr;
-	playerInventory = nullptr;
+	currentScene = new Scene(this);
+	playerInventory = new Inventory(this);
 }
 
 Game::~Game()
@@ -27,7 +28,7 @@ void Game::Update()
 	}
 }
 
-inline Scene* Game::getInventory()
+inline Inventory* Game::getInventory()
 {
 	return playerInventory;
 }

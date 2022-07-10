@@ -2,6 +2,7 @@
 #pragma once
 
 class Scene;
+class Inventory;
 class GameObject;
 class EventManager;
 
@@ -15,7 +16,7 @@ class Game
 {
 private:
 	Scene* currentScene;
-	Scene* playerInventory;
+	Inventory* playerInventory;
 	EventManager* eventManager;
 	
 public:
@@ -24,7 +25,7 @@ public:
 
 	void Update();
 
-	Scene* getInventory();
+	Inventory* getInventory();
 	Scene* getCurrentScene();
 	void setCurrentScene(Scene& currentScene);	//creates a version for game to have as its currentScene
 
