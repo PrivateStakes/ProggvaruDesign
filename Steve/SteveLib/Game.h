@@ -5,6 +5,8 @@ class Scene;
 class Inventory;
 class GameObject;
 class EventManager;
+class InputSanitizer;
+class GameObjectRepos;
 
 enum class WhichScene
 {
@@ -18,6 +20,9 @@ private:
 	Scene* currentScene;
 	Inventory* playerInventory;
 	EventManager* eventManager;
+	InputSanitizer* inputSanitizer;
+	GameObjectRepos* gameObjectRepos;
+
 	
 public:
 	Game();
@@ -31,4 +36,5 @@ public:
 
 	GameObject* getItemFromScene(int x, WhichScene scene);
 	EventManager* getEventManager();
+	GameObjectRepos* getGameObjectRepos();
 };

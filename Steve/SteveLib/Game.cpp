@@ -3,11 +3,14 @@
 #include "Scene.h"
 #include "Inventory.h"
 #include "GameObject.h"
+#include "InputSanitizer.h"
+#include "GameObjectRepos.h"
 
 Game::Game()
 {
-	currentScene = new Scene(this);
+	currentScene = nullptr;
 	playerInventory = new Inventory(this);
+	inputSanitizer = new InputSanitizer;
 }
 
 Game::~Game()
@@ -17,14 +20,18 @@ Game::~Game()
 
 	delete playerInventory;
 	playerInventory = nullptr;
+
+	delete inputSanitizer;
+	inputSanitizer = nullptr;
 }
 
 void Game::Update()
 {
 	bool gameOn = true;
+
 	while (gameOn)
 	{
-
+		//std::cout << inputSanitizer->playerInputText() << std::endl;
 	}
 }
 
@@ -68,4 +75,9 @@ inline GameObject* Game::getItemFromScene(int x, WhichScene scene)
 inline EventManager* Game::getEventManager()
 {
 	return eventManager;
+}
+
+GameObjectRepos* Game::getGameObjectRepos()
+{
+	return gameObjectRepos;
 }

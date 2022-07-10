@@ -164,6 +164,7 @@
     <ClInclude Include="GameElement.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="GameObjectRepos.h" />
+    <ClInclude Include="InputSanitizer.h" />
     <ClInclude Include="InteractionType.h" />
     <ClInclude Include="Inventory.h" />
     <ClInclude Include="Move.h" />
@@ -184,6 +185,7 @@
     <ClCompile Include="GameElement.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="GameObjectRepos.cpp" />
+    <ClCompile Include="InputSanitizer.cpp" />
     <ClCompile Include="InteractionType.cpp" />
     <ClCompile Include="Inventory.cpp" />
     <ClCompile Include="Move.cpp" />

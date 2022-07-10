@@ -6,19 +6,16 @@
 
 Scene::Scene(Game* game)
 {
-	gameObjectRepos = new GameObjectRepos();
 	myGame = game;
 }
 
 Scene::~Scene()
 {
-	delete gameObjectRepos;
-	gameObjectRepos = nullptr;
 }
 
 inline void Scene::listAvailableElements()
 {
-	gameObjectRepos->listAllElements();
+	myGame->getGameObjectRepos()->listAllElements();
 	//list all elements through characterRepos also
 }
 
@@ -29,7 +26,7 @@ inline bool Scene::isAvailable(std::string name)
 
 inline bool Scene::isGameObject(std::string name)
 {
-	if (gameObjectRepos->getGameObject(name) != nullptr) return true;
+	if (myGame->getGameObjectRepos()->getGameObject(name) != nullptr) return true;
 	else return false;
 }
 
@@ -40,17 +37,17 @@ bool Scene::isCharacter(std::string name)
 
 inline GameObject* Scene::getItemFromScene(std::string input)
 {
-	return gameObjectRepos->getGameObject(input);
+	return myGame->getGameObjectRepos()->getGameObject(input);
 }
 
 inline GameObject* Scene::getItemFromScene_index(int index)
 {
-	return gameObjectRepos->getGameObject_index(index);
+	return myGame->getGameObjectRepos()->getGameObject_index(index);
 }
 
 inline void Scene::addItemInScene(GameObject input)
 {
-	gameObjectRepos->addGameObject(input);
+	myGame->getGameObjectRepos()->addGameObject(input);
 }
 
 GameObject* Scene::getCharacterFromScene(std::string)

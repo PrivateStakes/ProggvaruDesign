@@ -9,7 +9,6 @@ class Game;
 class Scene
 {
 protected:
-	GameObjectRepos* gameObjectRepos;
 	//character repos
 	Game* myGame;
 
