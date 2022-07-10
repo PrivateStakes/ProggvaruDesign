@@ -28,7 +28,8 @@ inline bool Scene::isAvailable(std::string name)
 
 inline bool Scene::isGameObject(std::string name)
 {
-	return true;
+	if (gameObjectRepos->getGameObject(name) != nullptr) return true;
+	else return false;
 }
 
 inline GameObject* Scene::getItemFromScene(std::string input)

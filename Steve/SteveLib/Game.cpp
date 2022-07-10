@@ -18,6 +18,15 @@ Game::~Game()
 	playerInventory = nullptr;
 }
 
+void Game::Update()
+{
+	bool gameOn = true;
+	while (gameOn)
+	{
+
+	}
+}
+
 inline Scene* Game::getInventory()
 {
 	return playerInventory;

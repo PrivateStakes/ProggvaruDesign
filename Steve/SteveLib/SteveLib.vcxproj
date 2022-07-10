@@ -165,6 +165,7 @@
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="GameObjectRepos.h" />
     <ClInclude Include="InteractionType.h" />
+    <ClInclude Include="Inventory.h" />
     <ClInclude Include="Move.h" />
     <ClInclude Include="Notification.h" />
     <ClInclude Include="Open.h" />
@@ -184,6 +185,7 @@
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="GameObjectRepos.cpp" />
     <ClCompile Include="InteractionType.cpp" />
+    <ClCompile Include="Inventory.cpp" />
     <ClCompile Include="Move.cpp" />
     <ClCompile Include="Notification.cpp" />
     <ClCompile Include="Open.cpp" />

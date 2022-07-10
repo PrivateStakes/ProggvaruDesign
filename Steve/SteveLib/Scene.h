@@ -8,7 +8,7 @@ class Game;
 
 class Scene
 {
-private:
+protected:
 	GameObjectRepos* gameObjectRepos;
 	Game* myGame;
 

@@ -22,6 +22,8 @@ public:
 	Game();
 	~Game();
 
+	void Update();
+
 	Scene* getInventory();
 	Scene* getCurrentScene();
 	void setCurrentScene(Scene& currentScene);	//creates a version for game to have as its currentScene

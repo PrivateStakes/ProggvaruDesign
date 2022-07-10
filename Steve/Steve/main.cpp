@@ -5,6 +5,7 @@
 int main()
 {
 	Game* game = new Game();
-	std::cout << "Hello World!\n";
+	game->Update();
+
 	return 0;
 }
