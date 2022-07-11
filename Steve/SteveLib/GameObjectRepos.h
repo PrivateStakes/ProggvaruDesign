@@ -4,6 +4,7 @@
 #include <vector>
 
 class GameObject;
+class Game;
 
 class GameObjectRepos
 {
@@ -18,9 +19,10 @@ public:
 	GameObject* getGameObject(std::string gameElementName);
 	GameObject* getGameObject_index(int index);
 
-	void addGameObject(GameObject);
+	void addGameObject(Game*);
 	void removeGameObject(std::string name);
 	void removeGameObject_index(int index);
 
-	void listAllElements();
+	std::string listAllElements();
+	int getGameObjectHolderSize();
 };

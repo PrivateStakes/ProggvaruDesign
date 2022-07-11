@@ -11,13 +11,17 @@ class Scene
 protected:
 	//character repos
 	Game* myGame;
+	GameObjectRepos* gameObjectRepos;
 
 public:
 	Scene(Game*);
 	~Scene();
 	
 	//change to element return type (whatever that is)
-	void listAvailableElements();
+	std::string listAllGameObjects();
+	int getGameObjectHolderSize();
+	std::string listAllCharacters();
+	int getCharacterHolderSize();
 
 	bool isAvailable(std::string name);	//????
 	bool isGameObject(std::string name);
@@ -25,7 +29,7 @@ public:
 
 	GameObject* getItemFromScene(std::string);
 	GameObject* getItemFromScene_index(int index);
-	void addItemInScene(GameObject);
+	void addItemInScene(Game*);
 
 	virtual GameObject* getCharacterFromScene(std::string);
 	virtual GameObject* getCharacterFromScene_index(int index);

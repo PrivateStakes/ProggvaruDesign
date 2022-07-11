@@ -1,16 +1,16 @@
 #include "pch.h"
 #include "Game.h"
-#include "Scene.h"
 #include "Inventory.h"
-#include "GameObject.h"
 #include "InputSanitizer.h"
-#include "GameObjectRepos.h"
 
-Game::Game()
+Game::Game() : 
+	currentScene(nullptr)
 {
-	currentScene = nullptr;
 	playerInventory = new Inventory(this);
-	inputSanitizer = new InputSanitizer;
+
+	allScenes.push_back(new Scene(this));
+	allScenes.push_back(new Scene(this));
+	allScenes.push_back(new Scene(this));
 }
 
 Game::~Game()
@@ -20,19 +20,6 @@ Game::~Game()
 
 	delete playerInventory;
 	playerInventory = nullptr;
-
-	delete inputSanitizer;
-	inputSanitizer = nullptr;
-}
-
-void Game::Update()
-{
-	bool gameOn = true;
-
-	while (gameOn)
-	{
-		//std::cout << inputSanitizer->playerInputText() << std::endl;
-	}
 }
 
 inline Inventory* Game::getInventory()
@@ -40,20 +27,24 @@ inline Inventory* Game::getInventory()
 	return playerInventory;
 }
 
-inline Scene* Game::getCurrentScene()
+Scene* Game::getCurrentScene()
 {
 	return currentScene;
 }
 
-inline void Game::setCurrentScene(Scene& scene)
+void Game::setCurrentScene(int sceneIndex)
 {
 	if (currentScene != nullptr)
 	{
 		delete currentScene;
 		currentScene = nullptr;
 	}
+	currentScene = allScenes[sceneIndex];
+}
 
-	currentScene = new Scene(scene);
+int Game::getAllScenesSize()
+{
+	return allScenes.size();
 }
 
 inline GameObject* Game::getItemFromScene(int x, WhichScene scene)
@@ -77,7 +68,3 @@ inline EventManager* Game::getEventManager()
 	return eventManager;
 }
 
-GameObjectRepos* Game::getGameObjectRepos()
-{
-	return gameObjectRepos;
-}

@@ -4,19 +4,39 @@
 #include "GameObjectRepos.h"
 #include "GameObject.h"
 
-Scene::Scene(Game* game)
+Scene::Scene(Game* game) :
+	myGame(game)
 {
-	myGame = game;
+	gameObjectRepos = new GameObjectRepos();
 }
 
 Scene::~Scene()
 {
+	myGame = nullptr;
+
+	delete gameObjectRepos;
+	gameObjectRepos = nullptr;
 }
 
-inline void Scene::listAvailableElements()
+inline std::string Scene::listAllGameObjects()
 {
-	myGame->getGameObjectRepos()->listAllElements();
+	return gameObjectRepos->listAllElements();
+}
+
+inline int Scene::getGameObjectHolderSize()
+{
+	return gameObjectRepos->getGameObjectHolderSize();
+}
+
+inline std::string Scene::listAllCharacters()
+{
+	return "none";
 	//list all elements through characterRepos also
+}
+
+inline int Scene::getCharacterHolderSize()
+{
+	return 0;
 }
 
 inline bool Scene::isAvailable(std::string name)
@@ -26,41 +46,41 @@ inline bool Scene::isAvailable(std::string name)
 
 inline bool Scene::isGameObject(std::string name)
 {
-	if (myGame->getGameObjectRepos()->getGameObject(name) != nullptr) return true;
+	if (gameObjectRepos->getGameObject(name) != nullptr) return true;
 	else return false;
 }
 
-bool Scene::isCharacter(std::string name)
+inline bool Scene::isCharacter(std::string name)
 {
 	return false;
 }
 
 inline GameObject* Scene::getItemFromScene(std::string input)
 {
-	return myGame->getGameObjectRepos()->getGameObject(input);
+	return gameObjectRepos->getGameObject(input);
 }
 
 inline GameObject* Scene::getItemFromScene_index(int index)
 {
-	return myGame->getGameObjectRepos()->getGameObject_index(index);
+	return gameObjectRepos->getGameObject_index(index);
 }
 
-inline void Scene::addItemInScene(GameObject input)
+void Scene::addItemInScene(Game* input)
 {
-	myGame->getGameObjectRepos()->addGameObject(input);
+	gameObjectRepos->addGameObject(input);
 }
 
-GameObject* Scene::getCharacterFromScene(std::string)
-{
-	return nullptr;
-}
-
-GameObject* Scene::getCharacterFromScene_index(int index)
+inline GameObject* Scene::getCharacterFromScene(std::string)
 {
 	return nullptr;
 }
 
-void Scene::addCharacterInScene(GameObject)
+inline GameObject* Scene::getCharacterFromScene_index(int index)
+{
+	return nullptr;
+}
+
+inline void Scene::addCharacterInScene(GameObject)
 {
 
 }

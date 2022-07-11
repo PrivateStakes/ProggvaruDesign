@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "GameObjectRepos.h"
 #include "GameObject.h"
+#include "Game.h"
 
 GameObjectRepos::GameObjectRepos()
 {
@@ -38,9 +39,9 @@ inline GameObject* GameObjectRepos::getGameObject_index(int index)
 	return returnObject;
 }
 
-inline void GameObjectRepos::addGameObject(GameObject object)
+void GameObjectRepos::addGameObject(Game* input)
 {
-	gameObjectHolder.push_back(new GameObject(object));
+	gameObjectHolder.push_back(new GameObject(input));
 }
 
 inline void GameObjectRepos::removeGameObject(std::string name)
@@ -74,11 +75,18 @@ inline void GameObjectRepos::removeGameObject_index(int index)
 	else std::cout << "no such object was found" << std::endl;
 }
 
-inline void GameObjectRepos::listAllElements()
+inline std::string GameObjectRepos::listAllElements()
 {
+	std::string output;
 	for (int i = 0; i < gameObjectHolder.size() - 1; i++)
 	{
-		std::cout << (i + 1) << ": " << gameObjectHolder[i]->getName() << std::endl;
+		output += ": " + gameObjectHolder[i]->getName() + '\n';
 	}
 	
+	return output;
+}
+
+int GameObjectRepos::getGameObjectHolderSize()
+{
+	return gameObjectHolder.size();
 }
