@@ -62,6 +62,14 @@ int main()
 
 			int playerInput = inputSanitizer.playerInputNumbers(1, exitIndex);
 			if (playerInput == exitIndex) inScene = false;
+			else
+			{
+				//for (int i = 0; i < game.getCurrentScene()->getItemFromScene_index(playerInput)->listInteractionTypes().size(); i++)
+				//{
+				//	//std::cout << std::to_string(i + 1) << " " << game.getCurrentScene()->getItemFromScene_index(playerInput)->listInteractionTypes()[i] << std::endl;
+				//}
+				
+			}
 			//else std::cout << game.getCurrentScene()->getItemFromScene_index(playerInput);
 
 			//std::system("CLS");

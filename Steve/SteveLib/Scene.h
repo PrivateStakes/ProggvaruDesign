@@ -1,8 +1,8 @@
 #include "pch.h"
 #pragma once
 #include <iostream>
+#include "GameObject.h"
 
-class GameObject;
 class GameObjectRepos;
 class Game;
 
