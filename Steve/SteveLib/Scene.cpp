@@ -18,12 +18,12 @@ Scene::~Scene()
 	gameObjectRepos = nullptr;
 }
 
-inline std::string Scene::listAllGameObjects()
+std::string Scene::listAllGameObjects()
 {
 	return gameObjectRepos->listAllElements();
 }
 
-inline int Scene::getGameObjectHolderSize()
+int Scene::getGameObjectHolderSize()
 {
 	return gameObjectRepos->getGameObjectHolderSize();
 }
@@ -34,7 +34,7 @@ inline std::string Scene::listAllCharacters()
 	//list all elements through characterRepos also
 }
 
-inline int Scene::getCharacterHolderSize()
+int Scene::getCharacterHolderSize()
 {
 	return 0;
 }

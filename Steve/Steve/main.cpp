@@ -1,7 +1,16 @@
 #include <iostream>
+#include <random>
 #include <string>
 #include "Game.h"
 
+int randomNumberGenerator(int low, int high)
+{
+	std::random_device rd; // obtain a random number from hardware
+	std::mt19937 gen(rd()); // seed the generator
+	std::uniform_int_distribution<> distr(low, high); // define the range
+
+	return distr(gen);
+}
 
 int main()
 {
@@ -26,16 +35,42 @@ int main()
 
 		game.setCurrentScene(inputSanitizer.playerInputNumbers(availableScenesQuantity) - 1);
 		if (game.getCurrentScene() == nullptr) std::cout << "Invalid scene!" << std::endl;
-//		game.getCurrentScene()->addItemInScene(&game);
+
+		//generates a random amount of objects in the room
+		//NOTE: temporary, should be done individually for all rooms (except the Inverntory) upon generation
+		switch (randomNumberGenerator(0, 2))
+		{
+		case 0:
+			game.getCurrentScene()->addItemInScene(&game);
+			break;
+
+		case 1:
+			game.getCurrentScene()->addItemInScene(&game);
+			game.getCurrentScene()->addItemInScene(&game);
+			break;
+
+		default:
+			break;
+		}
 
 		bool inScene = true;
 		while (inScene)
 		{
-			//std::cout << "In this scene there are " << currentScene->listAllGameObjects() << " objects available," << std::endl;
-			//std::cout << "and " << currentScene->listAllCharacters() << " characters available." << std::endl;
+			std::string wordQuantity = "";
+			std::string wordTense = "is ";
+			if (game.getCurrentScene()->getGameObjectHolderSize() > 1 || game.getCurrentScene()->getGameObjectHolderSize() == 0)
+			{
+				wordQuantity = "s";
+				wordTense = "are ";
+			}
+			std::cout << "In this scene there " << wordTense << game.getCurrentScene()->getGameObjectHolderSize() << " object" << wordQuantity << " available," << std::endl;
+			
+			if (game.getCurrentScene()->getCharacterHolderSize() > 1 || game.getCurrentScene()->getCharacterHolderSize() == 0) wordQuantity = "s";
+			std::cout << "and " << game.getCurrentScene()->getCharacterHolderSize() << " character" << wordQuantity << " available." << std::endl;
+			
 
 
-
+			inputSanitizer.playerInputGeneral();
 		}
 	}
 

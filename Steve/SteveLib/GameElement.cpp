@@ -10,7 +10,7 @@ GameElement::~GameElement()
 {
 }
 
-inline std::string GameElement::getName()
+std::string GameElement::getName()
 {
 	return name;
 }

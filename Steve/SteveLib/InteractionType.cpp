@@ -3,7 +3,8 @@
 
 InteractionType::InteractionType()
 {
-	interactionOptions = new InteractionType;
+	//interactionOptions = new InteractionType;
+	interactionOptions = nullptr;
 
 	interactions = new std::string[5];
 	interactions[0] = "Open";
@@ -16,4 +17,9 @@ InteractionType::InteractionType()
 inline std::string* InteractionType::listOfInteractions()
 {
 	return interactions;
+}
+
+void InteractionType::addInteractionOptions(InteractionType input)
+{
+	interactionOptions = new InteractionType(input);
 }

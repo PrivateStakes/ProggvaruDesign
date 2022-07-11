@@ -75,7 +75,7 @@ inline void GameObjectRepos::removeGameObject_index(int index)
 	else std::cout << "no such object was found" << std::endl;
 }
 
-inline std::string GameObjectRepos::listAllElements()
+std::string GameObjectRepos::listAllElements()
 {
 	std::string output;
 	for (int i = 0; i < gameObjectHolder.size() - 1; i++)

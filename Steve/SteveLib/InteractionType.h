@@ -19,5 +19,6 @@ public:
 	InteractionType();
 
 	std::string* listOfInteractions();
+	void addInteractionOptions(InteractionType);
 };
 
