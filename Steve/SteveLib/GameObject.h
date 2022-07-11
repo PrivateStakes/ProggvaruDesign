@@ -18,7 +18,7 @@ public:
 	GameObject(Game* game);
 	~GameObject();
 
-	string* listInteractionTypes();
+	std::vector<std::string> listInteractionTypes();
 	string returnInteractionMessage();
 	void startInteraction(string theInteractionType);
 	void listCurrentInteractionOptions();

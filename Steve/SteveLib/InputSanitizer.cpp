@@ -112,6 +112,35 @@ int InputSanitizer::playerInputNumbers(std::vector<int> oInput)
 	return std::stoi(input);
 }
 
+int InputSanitizer::playerInputNumbers(int low, int high)
+{
+	std::string input;
+	bool gameOn = true;
+
+	if (low == high) return low;
+	else
+	{
+		while (gameOn == true)
+		{
+			std::cin >> input;
+
+			for (size_t i = low; i <= high; i++)
+			{
+				if (std::cin.fail() != true && letterChecker(input))
+				{
+					if (std::stoi(input) == i) gameOn = false;
+				}
+			}
+			if (gameOn) std::cout << "Couldn't find that" << std::endl;
+
+			std::cin.clear();
+			std::cin.ignore();
+		}
+	}
+	
+	return std::stoi(input);
+}
+
 std::string InputSanitizer::playerInputText()
 {
 	std::string input;

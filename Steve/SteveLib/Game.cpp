@@ -2,6 +2,7 @@
 #include "Game.h"
 #include "Inventory.h"
 #include "InputSanitizer.h"
+#include <random>
 
 Game::Game() : 
 	currentScene(nullptr)
@@ -20,6 +21,18 @@ Game::~Game()
 
 	delete playerInventory;
 	playerInventory = nullptr;
+
+	delete currentScene;
+	currentScene = nullptr;
+}
+
+int Game::randomNumberGenerator(int low, int high)
+{
+	std::random_device rd; // obtain a random number from hardware
+	std::mt19937 gen(rd()); // seed the generator
+	std::uniform_int_distribution<> distr(low, high); // define the range
+
+	return distr(gen);
 }
 
 inline Inventory* Game::getInventory()
@@ -34,11 +47,7 @@ Scene* Game::getCurrentScene()
 
 void Game::setCurrentScene(int sceneIndex)
 {
-	if (currentScene != nullptr)
-	{
-		delete currentScene;
-		currentScene = nullptr;
-	}
+	if (currentScene != nullptr) currentScene = nullptr;
 	currentScene = allScenes[sceneIndex];
 }
 

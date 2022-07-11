@@ -10,6 +10,9 @@ private:
 	int id;
 	std::string name;
 
+protected:
+	void setName(std::string);
+
 public:
 	GameElement();
 	~GameElement();

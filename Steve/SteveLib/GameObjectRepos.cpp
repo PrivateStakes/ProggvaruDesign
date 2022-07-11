@@ -78,9 +78,9 @@ inline void GameObjectRepos::removeGameObject_index(int index)
 std::string GameObjectRepos::listAllElements()
 {
 	std::string output;
-	for (int i = 0; i < gameObjectHolder.size() - 1; i++)
+	for (int i = 0; i < gameObjectHolder.size(); i++)
 	{
-		output += ": " + gameObjectHolder[i]->getName() + '\n';
+		output += std::to_string(i + 1) + ": " + gameObjectHolder[i]->getName() + "\n";
 	}
 	
 	return output;

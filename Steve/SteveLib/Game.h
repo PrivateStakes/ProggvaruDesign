@@ -27,6 +27,8 @@ public:
 	Game();
 	~Game();
 
+	int randomNumberGenerator(int low, int high);
+
 	Inventory* getInventory();
 	Scene* getCurrentScene();
 	void setCurrentScene(int);	//creates a version for game to have as its currentScene

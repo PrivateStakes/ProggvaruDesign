@@ -2,9 +2,34 @@
 #include "Game.h"
 #include "GameObject.h"
 
+enum
+{
+	cheese,
+	TV,
+	closet
+};
 
 GameObject::GameObject(Game* game)
 {
+	switch (game->randomNumberGenerator(0, 2))
+	{
+	case cheese:
+		setName("cheese");
+		break;
+
+	case TV:
+		setName("TV");
+		break;
+
+	case closet:
+		setName("closet");
+		break;
+
+	default:
+		setName("YOU_FUCKED_UP");
+		break;
+	}
+
 	myGame = game;
 }
 
@@ -12,7 +37,7 @@ GameObject::~GameObject()
 {
 }
 
-inline string* GameObject::listInteractionTypes()
+inline std::vector<std::string> GameObject::listInteractionTypes()
 {
 	return listOfInteractions();
 }

@@ -4,22 +4,20 @@
 InteractionType::InteractionType()
 {
 	//interactionOptions = new InteractionType;
-	interactionOptions = nullptr;
 
-	interactions = new std::string[5];
-	interactions[0] = "Open";
-	interactions[1] = "Move";
-	interactions[2] = "TurnOn";
-	interactions[3] = "TurnOff";
-	interactions[4] = "Taste";
+	interactions.push_back("Open");
+	interactions.push_back("Move");
+	interactions.push_back("TurnOn");
+	interactions.push_back("TurnOff");
+	interactions.push_back("Taste");
 }
 
-inline std::string* InteractionType::listOfInteractions()
+inline std::vector<std::string> InteractionType::listOfInteractions()
 {
 	return interactions;
 }
 
 void InteractionType::addInteractionOptions(InteractionType input)
 {
-	interactionOptions = new InteractionType(input);
+	interactionOptions.push_back(input);
 }
