@@ -80,7 +80,7 @@ std::string GameObjectRepos::listAllElements()
 	std::string output;
 	for (int i = 0; i < gameObjectHolder.size(); i++)
 	{
-		output += std::to_string(i + 1) + ": " + gameObjectHolder[i]->getName() + "\n";
+		output += std::to_string(1 + i) + ": " + gameObjectHolder[i]->getName() + "\n";
 	}
 	
 	return output;
@@ -89,4 +89,19 @@ std::string GameObjectRepos::listAllElements()
 int GameObjectRepos::getGameObjectHolderSize()
 {
 	return gameObjectHolder.size();
+}
+
+std::string GameObjectRepos::getObjectName(int index)
+{
+	std::string name;
+
+	if (index > gameObjectHolder.size())
+	{
+		name = "";
+	}
+	else
+	{
+		name = gameObjectHolder[index - 1]->getName();
+	}
+	return name;
 }

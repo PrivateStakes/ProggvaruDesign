@@ -25,4 +25,6 @@ public:
 
 	std::string listAllElements();
 	int getGameObjectHolderSize();
+
+	std::string getObjectName(int index);
 };

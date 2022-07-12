@@ -21,7 +21,6 @@ private:
 	std::vector<Scene*> allScenes;
 	Inventory* playerInventory;
 	EventManager* eventManager;
-
 	
 public:
 	Game();

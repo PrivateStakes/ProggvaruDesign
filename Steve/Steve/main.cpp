@@ -8,6 +8,7 @@ int main()
 	InputSanitizer inputSanitizer;
 	//game->Update();
 
+	std::string objectName;
 	bool gameOn = true;
 
 	while (gameOn)
@@ -64,10 +65,17 @@ int main()
 			if (playerInput == exitIndex) inScene = false;
 			else
 			{
-				//for (int i = 0; i < game.getCurrentScene()->getItemFromScene_index(playerInput)->listInteractionTypes().size(); i++)
-				//{
-				//	//std::cout << std::to_string(i + 1) << " " << game.getCurrentScene()->getItemFromScene_index(playerInput)->listInteractionTypes()[i] << std::endl;
-				//}
+				objectName = game.getCurrentScene()->selectObject(playerInput);
+				std::cout << "\nYou have chosen the " << objectName << ".\n" << "The interactions are: " << "\n";
+
+
+
+				//std::vector <std::string> hej = game.getCurrentScene()->getItemFromScene_index(playerInput)->listInteractionTypes();
+
+				/*for (int i = 0; i < ; i++)
+				{
+					std::cout << std::to_string(i + 1) << " " << game.getCurrentScene()->getItemFromScene_index(playerInput)->listInteractionTypes()[i] << std::endl;
+				}*/
 				
 			}
 			//else std::cout << game.getCurrentScene()->getItemFromScene_index(playerInput);
