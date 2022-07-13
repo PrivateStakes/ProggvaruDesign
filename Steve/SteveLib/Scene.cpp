@@ -84,3 +84,8 @@ inline void Scene::addCharacterInScene(GameObject)
 {
 
 }
+
+std::string Scene::selectObject(int index)
+{
+	return gameObjectRepos->getObjectName(index);
+}

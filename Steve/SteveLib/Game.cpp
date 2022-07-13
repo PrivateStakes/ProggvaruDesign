@@ -76,4 +76,3 @@ inline EventManager* Game::getEventManager()
 {
 	return eventManager;
 }
-
