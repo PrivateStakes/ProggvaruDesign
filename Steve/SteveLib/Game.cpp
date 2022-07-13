@@ -22,7 +22,11 @@ Game::~Game()
 	delete playerInventory;
 	playerInventory = nullptr;
 
-	delete currentScene;
+	for (int i = 0; i < allScenes.size(); i++)
+	{
+		delete allScenes[i];
+		allScenes[i] = nullptr;
+	}
 	currentScene = nullptr;
 }
 

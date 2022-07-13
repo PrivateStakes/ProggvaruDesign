@@ -6,10 +6,8 @@ int main()
 {
 	Game game = Game();
 	InputSanitizer inputSanitizer;
-	//game->Update();
 
 	bool gameOn = true;
-
 	while (gameOn)
 	{
 		std::cout << "There are " << game.getAllScenesSize() << " scenes available. Which one do you want to enter?" << std::endl;
@@ -17,7 +15,8 @@ int main()
 		for (int i = 0; i < game.getAllScenesSize(); i++)
 		{
 			if (i < game.getAllScenesSize() - 1) availableScenes += std::to_string(i + 1) + ", ";
-			else availableScenes += "or " + std::to_string(i + 1) + '?';
+			else if (game.getAllScenesSize() > 1)availableScenes += "or " + std::to_string(i + 1) + '?';
+			else availableScenes += std::to_string(i + 1) + " is the only one available";
 		}
 		std::cout << availableScenes << std::endl;
 
@@ -60,8 +59,8 @@ int main()
 			const int exitIndex = game.getCurrentScene()->getGameObjectHolderSize() + game.getCurrentScene()->getCharacterHolderSize() + 1;
 			std::cout << std::to_string(exitIndex) << " exit" << std::endl;
 
-			int playerInput = inputSanitizer.playerInputNumbers(1, exitIndex);
-			if (playerInput == exitIndex) inScene = false;
+			int playerInput = inputSanitizer.playerInputNumbers(1, exitIndex) - 1;
+			if (playerInput == exitIndex - 1) inScene = false;
 			else
 			{
 				//Put all this shit in an external function so that he interaction types can increment infinitely
@@ -69,18 +68,18 @@ int main()
 				bool interactinWithObject = true;
 				while (interactinWithObject)
 				{
-					const int numberOfInteractions = game.getCurrentScene()->getItemFromScene_index(playerInput - 1)->listInteractionTypes().size();
+					const int numberOfInteractions = game.getCurrentScene()->getItemFromScene_index(playerInput)->listInteractionTypes().size();
 					for (int i = 0; i < numberOfInteractions; i++)
 					{
-						std::cout << std::to_string(i + 1) << " " << game.getCurrentScene()->getItemFromScene_index(playerInput - 1)->listInteractionTypes()[i] << std::endl;
+						std::cout << std::to_string(i + 1) << " " << game.getCurrentScene()->getItemFromScene_index(playerInput)->listInteractionTypes()[i] << std::endl;
 					}
 					std::cout << std::to_string(numberOfInteractions + 1) << " return to scene" << std::endl;
 					
-					int playerInputInteraction = inputSanitizer.playerInputNumbers(1, numberOfInteractions + 1);
-					if (playerInputInteraction == numberOfInteractions + 1) interactinWithObject = false;
+					int playerInputInteraction = inputSanitizer.playerInputNumbers(1, numberOfInteractions + 1) - 1;
+					if (playerInputInteraction == numberOfInteractions) interactinWithObject = false;
 					else
 					{
-						//access interaction type flavour text
+						//access interaction type flavour text or eventual sub-menus
 
 						std::cout << "you did the thing" << std::endl;
 					}

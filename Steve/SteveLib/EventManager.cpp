@@ -4,19 +4,18 @@
 #include "EventManager.h"
 
 EventManager::EventManager()
-	:amountOfEvents(0)
 {
-	currentEvent = nullptr;
-	currentEvent = new Event * [amountOfEvents] {nullptr};
+
 }
 
 EventManager::~EventManager()
 {
 }
 
-inline void EventManager::createEvent(std::string typeOfEvent)
+inline Event* EventManager::createEvent(std::string typeOfEvent)
 {
-	currentEvent[amountOfEvents++] = new Event(typeOfEvent);
+	eventContainer.push_back(new Event(typeOfEvent));
+	return eventContainer[eventContainer.size()-1];
 }
 
 inline void EventManager::listAffectedEvents(std::string eventCondition)
@@ -25,28 +24,24 @@ inline void EventManager::listAffectedEvents(std::string eventCondition)
 
 inline void EventManager::triggerEvents(std::string eventCondition)
 {
-	for (int i = 0; i < amountOfEvents; i++)
+	for (int i = 0; i < eventContainer.size(); i++)
 	{
-		if (eventCondition == currentEvent[i]->getTypeOfEvent()) currentEvent[i]->activate();
+		if (eventCondition == eventContainer[i]->getTypeOfEvent()) eventContainer[i]->activate();
 	}
 
 }
 
 inline void EventManager::clearEvent(std::string eventCondition)
 {
-	for (int i = 0; i < amountOfEvents; i++)
+	for (int i = 0; i < eventContainer.size(); i++)
 	{
-		if (eventCondition == currentEvent[i]->getTypeOfEvent())
+		if (eventCondition == eventContainer[i]->getTypeOfEvent())
 		{
-			if (i != 0 || i != amountOfEvents - 1)
-			{
-				delete currentEvent[i];
-				currentEvent[i] = nullptr;
-				currentEvent[i] = currentEvent[amountOfEvents - 1];
-				currentEvent[amountOfEvents - 1] = nullptr;
-				amountOfEvents--;
-			}
-
+			if (i != eventContainer.size() - 1) eventContainer[i] = new Event(*(eventContainer.back()));
+			
+			eventContainer.back() = nullptr;
+			delete eventContainer.back();
+			eventContainer.pop_back();
 		}
 	}
 
@@ -54,19 +49,15 @@ inline void EventManager::clearEvent(std::string eventCondition)
 
 inline void EventManager::clearEvent(Event* theEventIWantToDelete)
 {
-	for (int i = 0; i < amountOfEvents; i++)
+	for (int i = 0; i < eventContainer.size(); i++)
 	{
-		if (theEventIWantToDelete == currentEvent[i])
+		if (theEventIWantToDelete == eventContainer[i])
 		{
-			if (i != 0 || i != amountOfEvents - 1)
-			{
-				delete currentEvent[i];
-				currentEvent[i] = nullptr;
-				currentEvent[i] = currentEvent[amountOfEvents - 1];
-				currentEvent[amountOfEvents - 1] = nullptr;
-				amountOfEvents--;
-			}
+			if (i != eventContainer.size() - 1) eventContainer[i] = new Event(*(eventContainer.back()));
 
+			eventContainer.back() = nullptr;
+			delete eventContainer.back();
+			eventContainer.pop_back();
 		}
 	}
 }

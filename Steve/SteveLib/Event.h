@@ -2,13 +2,15 @@
 #pragma once
 #include <iostream>
 
-class GameObject;
+class GameElement;
 class Notification;
 
 class Event
 {
 private:
 	std::string typeOfEvent;
+	GameElement* meElement;
+	int elementId;
 
 public:
 	Event();
@@ -18,7 +20,10 @@ public:
 	std::string getTypeOfEvent();
 	void setTypeOfEvent(std::string _event);
 	void activate();
-	void activate(GameObject* gameElement);
+	void activate(GameElement* gameElement);
 	void createNotification(Notification notification);
+
+	int getId() const;
+	void setId(int);
 };
 

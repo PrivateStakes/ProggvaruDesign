@@ -3,7 +3,8 @@
 #include "GameObject.h"
 #include "Game.h"
 
-GameObjectRepos::GameObjectRepos()
+GameObjectRepos::GameObjectRepos() :
+	idIncrementTracker(0)
 {
 	
 }
@@ -42,6 +43,8 @@ GameObject* GameObjectRepos::getGameObject_index(int index)
 void GameObjectRepos::addGameObject(Game* input)
 {
 	gameObjectHolder.push_back(new GameObject(input));
+	gameObjectHolder.back()->setId(idIncrementTracker);
+	idIncrementTracker++;
 }
 
 inline void GameObjectRepos::removeGameObject(std::string name)

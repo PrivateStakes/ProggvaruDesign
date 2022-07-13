@@ -13,6 +13,7 @@ InputSanitizer::~InputSanitizer()
 
 std::string InputSanitizer::playerInputGeneral()
 {
+	std::cin.clear();
 	std::string input;
 	bool gameOn = true;
 
@@ -31,6 +32,7 @@ std::string InputSanitizer::playerInputGeneral()
 
 std::string InputSanitizer::playerInputGeneral(std::vector<std::string> oInput)
 {
+	std::cin.clear();
 	std::string input;
 	bool gameOn = true;
 
@@ -73,6 +75,7 @@ bool letterChecker(const std::string& str)
 
 int InputSanitizer::playerInputNumbers()
 {
+	std::cin.clear();
 	std::string input;
 	bool gameOn = true;
 
@@ -91,6 +94,7 @@ int InputSanitizer::playerInputNumbers()
 
 int InputSanitizer::playerInputNumbers(std::vector<int> oInput)
 {
+	std::cin.clear();
 	std::string input;
 	bool gameOn = true;
 
@@ -115,6 +119,7 @@ int InputSanitizer::playerInputNumbers(std::vector<int> oInput)
 
 int InputSanitizer::playerInputNumbers(int low, int high)
 {
+	std::cin.clear();
 	std::string input;
 	bool gameOn = true;
 
@@ -144,6 +149,7 @@ int InputSanitizer::playerInputNumbers(int low, int high)
 
 std::string InputSanitizer::playerInputText()
 {
+	std::cin.clear();
 	std::string input;
 	bool gameOn = true;
 
@@ -162,6 +168,7 @@ std::string InputSanitizer::playerInputText()
 
 std::string InputSanitizer::playerInputText(std::vector<std::string> oInput)
 {
+	std::cin.clear();
 	std::string input;
 	bool gameOn = true;
 

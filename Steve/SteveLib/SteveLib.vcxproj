@@ -169,6 +169,7 @@
     <ClInclude Include="Inventory.h" />
     <ClInclude Include="Move.h" />
     <ClInclude Include="Notification.h" />
+    <ClInclude Include="NotificationTypes_e.h" />
     <ClInclude Include="Open.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="Scene.h" />

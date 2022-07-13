@@ -17,7 +17,7 @@ inline void Character::sendPlayerNotification(Notification notification)
 
 inline void Character::setMessage(Notification notification, std::string message)
 {
-	notification.setMessage(message);
+	notification.setMessage(message, (NotificationType)0);
 }
 
 inline std::string Character::askQuestion(std::string text)

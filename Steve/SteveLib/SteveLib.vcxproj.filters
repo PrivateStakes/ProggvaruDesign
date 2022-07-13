@@ -75,6 +75,9 @@
     <ClInclude Include="InputSanitizer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="NotificationTypes_e.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">

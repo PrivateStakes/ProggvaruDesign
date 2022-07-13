@@ -1,6 +1,6 @@
 #include "pch.h"
 #include "Notification.h"
-#include "GameObject.h"
+#include "GameElement.h"
 #include "Event.h"
 
 
@@ -28,30 +28,35 @@ inline void Event::setTypeOfEvent(std::string _event)
 
 inline void Event::activate()
 {
-	std::cout << "Försöker du utföra ett event som inte har med GaMeElEmEnTs att göra?\n";
+	std::cout << "Missing bound game element\n";
 }
 
-inline void Event::activate(GameObject* gameElement)
+inline void Event::activate(GameElement* gameElement)
 {
-	/*
-	GameObject* gameObjectPtr;
-	gameObjectPtr = dynamic_cast<GameObject*>(gameElement);
-	if (gameObjectPtr != nullptr)
-	{
-		gameObjectPtr->startCurrentInteraction();
-	}
-	*/
-
-	gameElement->startCurrentInteraction();
+	//if(gameElement != nullptr) gameElement->startCurrentInteraction(); //fix
 }
 
 inline void Event::createNotification(Notification notification)
 {
 	std::string notificationMessage;
+	NotificationType notificationType = NotificationType::none;
 
-	if (typeOfEvent == "pickup") notificationMessage = "You picked up an item!";
+	if (typeOfEvent == "pickup")
+	{
+		notificationMessage = "You picked up an item!";
+		notificationType = NotificationType::addObjectToInventory;
+	}
 	else if ("lick") notificationMessage = ":(";
 	else notificationMessage = "Unknown Event occured";
 
-	notification.setMessage(notificationMessage);
+	notification.setMessage(notificationMessage, notificationType);
 }
+int Event::getId() const
+{
+	return elementId;
+}
+void Event::setId(int input)
+{
+	elementId = input;
+}
+

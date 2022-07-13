@@ -11,6 +11,7 @@ class GameObjectRepos
 private:
 
 	std::vector<GameObject*> gameObjectHolder;
+	int idIncrementTracker;
 
 public:
 	GameObjectRepos();
