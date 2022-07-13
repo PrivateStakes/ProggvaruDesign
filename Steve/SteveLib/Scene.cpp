@@ -60,7 +60,7 @@ inline GameObject* Scene::getItemFromScene(std::string input)
 	return gameObjectRepos->getGameObject(input);
 }
 
-inline GameObject* Scene::getItemFromScene_index(int index)
+GameObject* Scene::getItemFromScene_index(int index)
 {
 	return gameObjectRepos->getGameObject_index(index);
 }

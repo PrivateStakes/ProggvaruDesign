@@ -57,22 +57,37 @@ int main()
 			std::cout << "and " << game.getCurrentScene()->getCharacterHolderSize() << " character" << wordQuantity << " available." << std::endl;
 			
 			std::cout << game.getCurrentScene()->listAllGameObjects();
-			int exitIndex = game.getCurrentScene()->getGameObjectHolderSize() + game.getCurrentScene()->getCharacterHolderSize() + 1;
+			const int exitIndex = game.getCurrentScene()->getGameObjectHolderSize() + game.getCurrentScene()->getCharacterHolderSize() + 1;
 			std::cout << std::to_string(exitIndex) << " exit" << std::endl;
 
 			int playerInput = inputSanitizer.playerInputNumbers(1, exitIndex);
 			if (playerInput == exitIndex) inScene = false;
 			else
 			{
-				//for (int i = 0; i < game.getCurrentScene()->getItemFromScene_index(playerInput)->listInteractionTypes().size(); i++)
-				//{
-				//	//std::cout << std::to_string(i + 1) << " " << game.getCurrentScene()->getItemFromScene_index(playerInput)->listInteractionTypes()[i] << std::endl;
-				//}
-				
-			}
-			//else std::cout << game.getCurrentScene()->getItemFromScene_index(playerInput);
+				//Put all this shit in an external function so that he interaction types can increment infinitely
 
-			//std::system("CLS");
+				bool interactinWithObject = true;
+				while (interactinWithObject)
+				{
+					const int numberOfInteractions = game.getCurrentScene()->getItemFromScene_index(playerInput - 1)->listInteractionTypes().size();
+					for (int i = 0; i < numberOfInteractions; i++)
+					{
+						std::cout << std::to_string(i + 1) << " " << game.getCurrentScene()->getItemFromScene_index(playerInput - 1)->listInteractionTypes()[i] << std::endl;
+					}
+					std::cout << std::to_string(numberOfInteractions + 1) << " return to scene" << std::endl;
+					
+					int playerInputInteraction = inputSanitizer.playerInputNumbers(1, numberOfInteractions + 1);
+					if (playerInputInteraction == numberOfInteractions + 1) interactinWithObject = false;
+					else
+					{
+						//access interaction type flavour text
+
+						std::cout << "you did the thing" << std::endl;
+					}
+				}
+			}
+
+			std::system("CLS");
 		}
 	}
 

@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "InputSanitizer.h"
 #include <iostream>
+#include <ctype.h>
 
 InputSanitizer::InputSanitizer()
 {
@@ -55,7 +56,7 @@ bool numberChecker(const std::string& str)
 {
 	for (char const& c : str) 
 	{
-		if (std::isdigit(c)) return false;
+		if (std::isdigit(static_cast<unsigned char>(c))) return false;
 	}
 	return true;
 }
@@ -65,7 +66,7 @@ bool letterChecker(const std::string& str)
 	bool hasNoLetters = true;
 	for (char const& c : str) 
 	{
-		if (!std::isdigit(c)) hasNoLetters = false;
+		if (!std::isdigit(static_cast<unsigned char>(c))) hasNoLetters = false;
 	}
 	return hasNoLetters;
 }

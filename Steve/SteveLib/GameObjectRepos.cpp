@@ -30,7 +30,7 @@ inline GameObject* GameObjectRepos::getGameObject(string gameElementName)
 	return returnObject;
 }
 
-inline GameObject* GameObjectRepos::getGameObject_index(int index)
+GameObject* GameObjectRepos::getGameObject_index(int index)
 {
 	GameObject* returnObject = nullptr;
 	if (index < gameObjectHolder.size()) returnObject = gameObjectHolder[index];

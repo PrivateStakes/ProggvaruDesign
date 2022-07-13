@@ -12,7 +12,7 @@ InteractionType::InteractionType()
 	interactions.push_back("Taste");
 }
 
-inline std::vector<std::string> InteractionType::listOfInteractions()
+std::vector<std::string> InteractionType::listOfInteractions()
 {
 	return interactions;
 }

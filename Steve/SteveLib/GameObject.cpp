@@ -37,7 +37,7 @@ GameObject::~GameObject()
 {
 }
 
-inline std::vector<std::string> GameObject::listInteractionTypes()
+std::vector<std::string> GameObject::listInteractionTypes()
 {
 	return listOfInteractions();
 }
