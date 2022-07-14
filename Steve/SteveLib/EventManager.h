@@ -1,9 +1,11 @@
 #include "pch.h"
+#include "NotificationTypes_e.h"
 #pragma once
 #include <iostream>
 #include <vector>
 
 class Event;
+class GameElement;
 
 class EventManager
 {
@@ -14,11 +16,12 @@ public:
 	EventManager();
 	~EventManager();
 
-	Event* createEvent(std::string typeOfEvent);
+	Event* createEvent(NotificationType);
 	void listAffectedEvents(std::string eventCondition);
-	void triggerEvents(std::string eventCondition);
-	void clearEvent(std::string eventCondition);
-	void clearEvent(Event *event);
+	void triggerEvents(NotificationType eventCondition);
+	bool triggerSpecificElement(int);	//requires ID of element
+
+	void clearEvent(GameElement &eventOwner);
 };
 
 

@@ -9,7 +9,7 @@ Notification::~Notification()
 {
 }
 
-inline std::string Notification::getNotificationMessage()
+std::string Notification::getNotificationMessage()
 {
 	return message;
 }

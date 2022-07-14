@@ -35,4 +35,6 @@ public:
 
 	GameObject* getItemFromScene(int x, WhichScene scene);
 	EventManager* getEventManager();
+
+	void updateEvents();
 };

@@ -2,6 +2,7 @@
 #include "Game.h"
 #include "Inventory.h"
 #include "InputSanitizer.h"
+#include "Notification.h"
 #include <random>
 
 Game::Game() : 
@@ -79,4 +80,34 @@ inline GameObject* Game::getItemFromScene(int x, WhichScene scene)
 inline EventManager* Game::getEventManager()
 {
 	return eventManager;
+}
+
+void updateEventsInScene(Scene* input)
+{
+	for (int i = 0; i < input->getGameObjectHolderSize(); i++)
+	{
+		if (input->getItemFromScene_index(i)->hasNotification())
+		{
+
+			std::cout << input->getItemFromScene_index(i)->getNotification()->getNotificationMessage();
+		}
+	}
+
+	for (int i = 0; i < input->getCharacterHolderSize(); i++)
+	{
+		if (input->getCharacterFromScene_index(i)->hasNotification())
+		{
+			//do shit here
+			std::cout << input->getCharacterFromScene_index(i)->getNotification()->getNotificationMessage();
+		}
+	}
+}
+
+void Game::updateEvents()
+{
+	for (int i = 0; i <= allScenes.size(); i++)
+	{
+		if (i != allScenes.size()) updateEventsInScene(allScenes[i]);
+		else updateEventsInScene(playerInventory);
+	}
 }

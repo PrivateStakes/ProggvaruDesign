@@ -1,4 +1,5 @@
 #include "pch.h"
+#include "NotificationTypes_e.h"
 #pragma once
 #include <iostream>
 
@@ -8,22 +9,24 @@ class Notification;
 class Event
 {
 private:
-	std::string typeOfEvent;
-	GameElement* meElement;
+	NotificationType eventType;
+	GameElement* gamemeElement;
 	int elementId;
+	Notification* notification;
 
 public:
 	Event();
-	Event(std::string typeOfEvent);
+	Event(NotificationType typeOfEvent);
 	~Event();
 
-	std::string getTypeOfEvent();
-	void setTypeOfEvent(std::string _event);
-	void activate();
-	void activate(GameElement* gameElement);
-	void createNotification(Notification notification);
+	void setEventType(NotificationType);
+	NotificationType getEventType();
+	bool createNotification(NotificationType notification);
+	void clearNotification();
+	Notification* readNotification() const;
 
 	int getId() const;
 	void setId(int);
 };
+
 

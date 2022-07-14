@@ -1,9 +1,11 @@
 #include "pch.h"
+#include "NotificationTypes_e.h"
 #pragma once
 #include <iostream>
 
 class EventManager;
 class Event;
+class Notification;
 
 class GameElement
 {
@@ -19,10 +21,14 @@ public:
 	GameElement();
 	~GameElement();
 
+	bool hasNotification();
+	Notification* getNotification();
+
 	int getId() const;
 	void setId(int);
 	std::string getName();
-	void generateEvent(EventManager eventManager, std::string typeOfEvent);
+	void generateEvent(EventManager eventManager, NotificationType);
+	void removeEvent();
 };
 
 

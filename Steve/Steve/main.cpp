@@ -68,6 +68,7 @@ int main()
 				bool interactinWithObject = true;
 				while (interactinWithObject)
 				{
+					game.updateEvents();
 					const int numberOfInteractions = game.getCurrentScene()->getItemFromScene_index(playerInput)->listInteractionTypes().size();
 					for (int i = 0; i < numberOfInteractions; i++)
 					{
