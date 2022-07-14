@@ -4,8 +4,12 @@
 
 int main()
 {
-	Game game = Game();
+	Game game;
 	InputSanitizer inputSanitizer;
+
+	game.createScene();
+	game.createScene();
+	game.createScene();
 
 	bool gameOn = true;
 	while (gameOn)

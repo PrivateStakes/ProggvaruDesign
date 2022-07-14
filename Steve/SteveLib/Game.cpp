@@ -9,10 +9,6 @@ Game::Game() :
 	currentScene(nullptr)
 {
 	playerInventory = new Inventory(this);
-
-	allScenes.push_back(new Scene(this));
-	allScenes.push_back(new Scene(this));
-	allScenes.push_back(new Scene(this));
 }
 
 Game::~Game()
@@ -59,6 +55,11 @@ void Game::setCurrentScene(int sceneIndex)
 int Game::getAllScenesSize()
 {
 	return allScenes.size();
+}
+
+void Game::createScene()
+{
+	allScenes.push_back(new Scene(this));
 }
 
 inline GameObject* Game::getItemFromScene(int x, WhichScene scene)

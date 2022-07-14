@@ -32,6 +32,7 @@ public:
 	Scene* getCurrentScene();
 	void setCurrentScene(int);	//creates a version for game to have as its currentScene
 	int getAllScenesSize();
+	void createScene();
 
 	GameObject* getItemFromScene(int x, WhichScene scene);
 	EventManager* getEventManager();
