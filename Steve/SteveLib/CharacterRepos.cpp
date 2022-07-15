@@ -9,6 +9,7 @@ bool CharacterRepos::noCharacterFound(int id)
 
 CharacterRepos::CharacterRepos()
 {
+	characterNames = new std::string[]{ "James",  "Mary", "Robert" , "Patricia", "John" , "Jennifer" , "Michael" , "Linda" , "David" , "Elizabeth" };
 }
 
 CharacterRepos::~CharacterRepos()
@@ -18,6 +19,14 @@ CharacterRepos::~CharacterRepos()
 		delete characterVector[i];
 		characterVector[i] = nullptr;
 	}
+}
+
+void CharacterRepos::addCharacter(Game* game)
+{
+	std::string name; 
+	if (nameIncramenter >= 10) name = characterNames[nameIncramenter % 10] + std::to_string(incramentValue);
+	else name = characterNames[nameIncramenter % 10];
+	characterVector.push_back(new Character(characterName()));
 }
 
 void CharacterRepos::addCharacter(Character* character)

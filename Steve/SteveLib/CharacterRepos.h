@@ -14,6 +14,7 @@ public:
 	~CharacterRepos();
 
 	void addCharacter(Character* character);
+	void addCharacter(std::string characterName);
 	void removeCharacter(std::string characterName);
 	void removeCharacter(int id);
 
