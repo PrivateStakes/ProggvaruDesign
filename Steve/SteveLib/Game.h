@@ -21,6 +21,8 @@ private:
 	std::vector<Scene*> allScenes;
 	Inventory* playerInventory;
 	EventManager* eventManager;
+
+	int idIncrementTracker;
 	
 public:
 	Game();
@@ -38,4 +40,7 @@ public:
 	EventManager* getEventManager();
 
 	void updateEvents();
+
+	int getIdIncrementTracker();
+	void setIdIncrementTracker(int);
 };

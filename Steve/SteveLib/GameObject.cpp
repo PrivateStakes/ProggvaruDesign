@@ -35,6 +35,7 @@ GameObject::GameObject(Game* game)
 
 GameObject::~GameObject()
 {
+	myGame = nullptr;
 }
 
 std::vector<std::string> GameObject::listInteractionTypes()
