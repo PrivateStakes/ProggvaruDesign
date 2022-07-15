@@ -6,7 +6,8 @@
 #include <random>
 
 Game::Game() : 
-	currentScene(nullptr)
+	currentScene(nullptr),
+	idIncrementTracker(0)
 {
 	playerInventory = new Inventory(this);
 }
@@ -111,4 +112,14 @@ void Game::updateEvents()
 		if (i != allScenes.size()) updateEventsInScene(allScenes[i]);
 		else updateEventsInScene(playerInventory);
 	}
+}
+
+int Game::getIdIncrementTracker()
+{
+	return idIncrementTracker;
+}
+
+void Game::setIdIncrementTracker(int input)
+{
+	idIncrementTracker = input;
 }

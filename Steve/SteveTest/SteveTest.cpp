@@ -4,8 +4,6 @@
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
-using MyGame = Game;
-
 namespace SteveTest
 {
 	TEST_CLASS(SteveTest)
@@ -14,35 +12,37 @@ namespace SteveTest
 		
 		TEST_METHOD(SendAndRecieveEvents)
 		{
-
+			//pretty self explanatory
 
 			Assert::IsTrue(true);
 		}
 
 		TEST_METHOD(TestAllInteractions)
 		{
-
+			//pretty self explanatory
 
 			Assert::IsTrue(true);
 		}
 
 		TEST_METHOD(CharacterPlayerNotificationSystem)
 		{
-
+			//character sends a notification to the player/secretary
 
 			Assert::IsTrue(true);
 		}
 
 		TEST_METHOD(SecretaryNotificationRelay)
 		{
-
+			//access secretary options and relay to player
 
 			Assert::IsTrue(true);
 		}
 
 		TEST_METHOD(MoveGameElement)
 		{
-			//MyGame game;
+			//move game element from one scene to another
+
+			Game game;
 			//game.createScene();
 			
 
