@@ -2,11 +2,15 @@
 #include "Character.h"
 #include <vector>
 #include <string>
+#include "Game.h"
 
 class CharacterRepos
 {
 private:
 	std::vector<Character*> characterVector;
+	int nameIncramenter;
+	int incramentValue;
+	std::string* characterNames;
 
 	bool noCharacterFound(int id);
 public:
@@ -14,7 +18,7 @@ public:
 	~CharacterRepos();
 
 	void addCharacter(Character* character);
-	void addCharacter(std::string characterName);
+	void addCharacter(Game* game);
 	void removeCharacter(std::string characterName);
 	void removeCharacter(int id);
 

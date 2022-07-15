@@ -26,7 +26,9 @@ void CharacterRepos::addCharacter(Game* game)
 	std::string name; 
 	if (nameIncramenter >= 10) name = characterNames[nameIncramenter % 10] + std::to_string(incramentValue);
 	else name = characterNames[nameIncramenter % 10];
-	characterVector.push_back(new Character(characterName()));
+	characterVector.push_back(new Character(name));
+	characterVector[characterVector.size() - 1]->setId(game->getIdIncrementTracker());
+	game->setIdIncrementTracker(game->getIdIncrementTracker() + 1);
 }
 
 void CharacterRepos::addCharacter(Character* character)
