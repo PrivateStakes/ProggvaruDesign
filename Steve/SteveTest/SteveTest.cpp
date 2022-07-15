@@ -10,7 +10,7 @@ namespace SteveTest
 	{
 	public:
 		
-		TEST_METHOD(SendAndRecieveEvents)
+		TEST_METHOD(SendAndRecieveEvents)	//KJE
 		{
 			//pretty self explanatory
 
@@ -19,7 +19,7 @@ namespace SteveTest
 
 		TEST_METHOD(TestAllInteractions)
 		{
-			//pretty self explanatory
+			//all interacrtion functionalities: flavourtext, move item, turn on/off
 
 			Assert::IsTrue(true);
 		}
@@ -38,13 +38,16 @@ namespace SteveTest
 			Assert::IsTrue(true);
 		}
 
-		TEST_METHOD(MoveGameElement)
+		TEST_METHOD(MoveGameElement)	//KJE
 		{
 			//move game element from one scene to another
 
 			Game game;
-			//game.createScene();
-			
+			game.createScene();
+			game.setCurrentScene(0);
+			game.getCurrentScene()->addItemInScene(&game);
+
+
 
 			Assert::IsTrue(true);
 		}
