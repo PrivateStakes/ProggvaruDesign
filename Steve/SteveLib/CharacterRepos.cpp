@@ -8,6 +8,7 @@ bool CharacterRepos::noCharacterFound(int id)
 }
 
 CharacterRepos::CharacterRepos()
+	:incramentValue(0), nameIncramenter(0)
 {
 	characterNames = new std::string[]{ "James",  "Mary", "Robert" , "Patricia", "John" , "Jennifer" , "Michael" , "Linda" , "David" , "Elizabeth" };
 }
@@ -24,8 +25,11 @@ CharacterRepos::~CharacterRepos()
 void CharacterRepos::addCharacter(Game* game)
 {
 	std::string name; 
-	if (nameIncramenter >= 10) name = characterNames[nameIncramenter % 10] + std::to_string(incramentValue);
-	else name = characterNames[nameIncramenter % 10];
+	if (nameIncramenter >= 10) name = characterNames[nameIncramenter % std::size(*characterNames)] + std::to_string(incramentValue);
+	else name = characterNames[nameIncramenter % std::size(*characterNames)];
+	nameIncramenter++;
+	if (nameIncramenter % std::size(*characterNames)) nameIncramenter++; incramentValue++;
+
 	characterVector.push_back(new Character(name));
 	characterVector[characterVector.size() - 1]->setId(game->getIdIncrementTracker());
 	game->setIdIncrementTracker(game->getIdIncrementTracker() + 1);
@@ -52,8 +56,12 @@ Character* CharacterRepos::getCharacter(std::string characterName)
 
 Character* CharacterRepos::getCharacter(int id)
 {
-	if (this->noCharacterFound(id)) return nullptr;
-	return characterVector[id];
+	for (int i = 0; i < characterVector.size(); i++)
+	{
+		if (characterVector[i]->getId()) return characterVector[i];
+	}
+	std::cout << "No person with that name was found\n";
+	return nullptr;
 }
 
 void CharacterRepos::removeCharacter(std::string characterName)
@@ -74,20 +82,26 @@ void CharacterRepos::removeCharacter(std::string characterName)
 
 void CharacterRepos::removeCharacter(int id)
 {
-	if (this->noCharacterFound(id)) return;
+	for (int i = 0; i < characterVector.size(); i++)
+	{
+		if (characterVector[i]->getId() == id)
+		{
+			delete characterVector[i];
+			characterVector[i] = nullptr;
+			characterVector[i] = characterVector.back();
 
-	delete characterVector[id];
-	characterVector[id] = nullptr;
-	characterVector[id] = characterVector.back();
-
-	characterVector.back() = nullptr;
-		
+			characterVector.back() = nullptr;
+		}
+	}
 }
 
 std::string CharacterRepos::getCharacterName(int id)
 {
-	if (this->noCharacterFound(id)) return "";
-	return characterVector[id]->getName();
+	for (int i = 0; i < characterVector.size(); i++)
+	{
+		if (characterVector[i]->getId() == id) return characterVector[i]->getName();
+	}
+	return "";
 }
 
 int CharacterRepos::getCharacterId(std::string characterName)

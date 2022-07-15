@@ -8,11 +8,10 @@ class CharacterRepos
 {
 private:
 	std::vector<Character*> characterVector;
-	int nameIncramenter;
-	int incramentValue;
+	int nameIncramenter; //Index
+	int incramentValue;	 //If all names are taken add incramentvalue to name
 	std::string* characterNames;
 
-	bool noCharacterFound(int id);
 public:
 	CharacterRepos();
 	~CharacterRepos();
