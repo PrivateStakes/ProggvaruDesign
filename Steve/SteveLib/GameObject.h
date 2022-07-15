@@ -13,6 +13,7 @@ private:
 	InteractionType* interactionTypes;
 	std::string interactionMessage;
 	Game* myGame;
+	bool isOn = false;
 
 public:
 	GameObject(Game* game);
