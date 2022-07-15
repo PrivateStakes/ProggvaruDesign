@@ -1,12 +1,6 @@
 #include "pch.h"
 #include "CharacterRepos.h"
 
-bool CharacterRepos::noCharacterFound(int id)
-{
-	if (characterVector.size() - 1 < id) std::cout << "Character could not be found.\n"; return true;
-	return false;
-}
-
 CharacterRepos::CharacterRepos()
 	:incramentValue(0), nameIncramenter(0)
 {

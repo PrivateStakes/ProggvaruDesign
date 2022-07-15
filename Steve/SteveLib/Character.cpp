@@ -2,10 +2,6 @@
 #include "Character.h"
 #include "Notification.h"
 
-Character::Character()
-{
-}
-
 Character::Character(std::string characterName)
 {
 	this->setName(characterName);

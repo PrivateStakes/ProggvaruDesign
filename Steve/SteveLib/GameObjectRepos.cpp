@@ -43,7 +43,7 @@ void GameObjectRepos::addGameObject(Game* input)
 {
 	gameObjectHolder.push_back(new GameObject(input));
 	gameObjectHolder.back()->setId(input->getIdIncrementTracker());
-	input->setIdIncrementTracker(input->getIdIncrementTracker());
+	input->setIdIncrementTracker(input->getIdIncrementTracker() + 1);
 }
 
 inline void GameObjectRepos::removeGameObject(std::string name)
