@@ -10,7 +10,7 @@ class Character : public GameElement
 private:
 
 public:
-	Character();
+	Character(std::string characterName);
 	~Character();
 
 	void sendPlayerNotification(Notification notification);

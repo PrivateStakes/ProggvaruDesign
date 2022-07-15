@@ -6,6 +6,11 @@ Character::Character()
 {
 }
 
+Character::Character(std::string characterName)
+{
+	this->setName(characterName);
+}
+
 Character::~Character()
 {
 }

@@ -2,18 +2,22 @@
 #include "Character.h"
 #include <vector>
 #include <string>
+#include "Game.h"
 
 class CharacterRepos
 {
 private:
 	std::vector<Character*> characterVector;
+	int nameIncramenter; //Index
+	int incramentValue;	 //If all names are taken add incramentvalue to name
+	std::string* characterNames;
 
-	bool noCharacterFound(int id);
 public:
 	CharacterRepos();
 	~CharacterRepos();
 
 	void addCharacter(Character* character);
+	void addCharacter(Game* game);
 	void removeCharacter(std::string characterName);
 	void removeCharacter(int id);
 
