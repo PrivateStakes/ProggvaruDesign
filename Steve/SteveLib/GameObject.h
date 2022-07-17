@@ -21,7 +21,7 @@ public:
 
 	std::vector<std::string> listInteractionTypes();
 	string returnInteractionMessage();
-	void startInteraction(string theInteractionType);
+	void startInteraction(string object, string theInteractionType);
 	void listCurrentInteractionOptions();
 	void setCurrentInteractionOptions(string theOptions);
 	void startCurrentInteraction();

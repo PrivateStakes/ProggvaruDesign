@@ -145,7 +145,7 @@ void Game::handleInteractions(InputSanitizer input, int index)
 		else
 		{
 			std::string type = getCurrentScene()->getItemFromScene_index(index)->listInteractionTypes()[playerInputInteraction];
-			getCurrentScene()->getItemFromScene_index(index)->startInteraction(type);
+			getCurrentScene()->getItemFromScene_index(index)->startInteraction(object, type);
 			std::string message = getCurrentScene()->getItemFromScene_index(index)->returnInteractionMessage();
 			std::cout << message << std::endl;
 		}

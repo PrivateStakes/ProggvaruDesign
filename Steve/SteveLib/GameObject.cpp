@@ -48,31 +48,31 @@ string GameObject::returnInteractionMessage()
 	return interactionMessage;
 }
 
-void GameObject::startInteraction(string theInteractionType)
+void GameObject::startInteraction(string object, string theInteractionType)
 {
 	if (theInteractionType == "Open")
 	{
-		Open open;
+		Open open(object);
 		interactionMessage = open.getMessage();
 	}
 	else if (theInteractionType == "Move")
 	{
-		Move move;
+		Move move(object);
 		interactionMessage = move.getMessage();
 	}
 	else if (theInteractionType == "TurnOn")
 	{
-		TurnOn turnOn;
+		TurnOn turnOn(object);
 		interactionMessage = turnOn.getMessage();
 	}
 	else if (theInteractionType == "TurnOff")
 	{
-		TurnOff turnOff;
+		TurnOff turnOff(object);
 		interactionMessage = turnOff.getMessage();
 	}
 	else if (theInteractionType == "Taste")
 	{
-		Taste taste;
+		Taste taste(object);
 		interactionMessage = taste.getMessage();
 	}
 	else
@@ -104,7 +104,7 @@ inline void GameObject::startCurrentInteraction()
 	}
 	else if (interaction == "Move")
 	{
-		Move move;
+		Move move("TV");
 		interactionMessage = move.getMessage();
 	}
 	else if (interaction == "TurnOn")
