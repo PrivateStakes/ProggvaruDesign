@@ -65,31 +65,7 @@ int main()
 
 			int playerInput = inputSanitizer.playerInputNumbers(1, exitIndex) - 1;
 			if (playerInput == exitIndex - 1) inScene = false;
-			else
-			{
-				//Put all this shit in an external function so that he interaction types can increment infinitely
-
-				bool interactinWithObject = true;
-				while (interactinWithObject)
-				{
-					game.updateEvents();
-					const int numberOfInteractions = game.getCurrentScene()->getItemFromScene_index(playerInput)->listInteractionTypes().size();
-					for (int i = 0; i < numberOfInteractions; i++)
-					{
-						std::cout << std::to_string(i + 1) << " " << game.getCurrentScene()->getItemFromScene_index(playerInput)->listInteractionTypes()[i] << std::endl;
-					}
-					std::cout << std::to_string(numberOfInteractions + 1) << " return to scene" << std::endl;
-					
-					int playerInputInteraction = inputSanitizer.playerInputNumbers(1, numberOfInteractions + 1) - 1;
-					if (playerInputInteraction == numberOfInteractions) interactinWithObject = false;
-					else
-					{
-						//access interaction type flavour text or eventual sub-menus
-
-						std::cout << "you did the thing" << std::endl;
-					}
-				}
-			}
+			else game.handleInteractions(inputSanitizer, playerInput);
 
 			std::system("CLS");
 		}

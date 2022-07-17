@@ -43,12 +43,12 @@ std::vector<std::string> GameObject::listInteractionTypes()
 	return listOfInteractions();
 }
 
-inline string GameObject::returnInteractionMessage()
+string GameObject::returnInteractionMessage()
 {
 	return interactionMessage;
 }
 
-inline void GameObject::startInteraction(string theInteractionType)
+void GameObject::startInteraction(string theInteractionType)
 {
 	if (theInteractionType == "Open")
 	{

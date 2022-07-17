@@ -6,7 +6,7 @@ Father::Father(std::string message)
 {
 }
 
-inline std::string Father::getMessage()
+std::string Father::getMessage()
 {
 	return message;
 }

@@ -123,3 +123,31 @@ void Game::setIdIncrementTracker(int input)
 {
 	idIncrementTracker = input;
 }
+
+void Game::handleInteractions(InputSanitizer input, int index)
+{
+	std::string object = getCurrentScene()->selectObject(index);
+	std::cout << "You chose the " << object << ".\nThe interactions are: \n";
+
+	bool interactinWithObject = true;
+	while (interactinWithObject)
+	{
+		updateEvents();
+		const int numberOfInteractions = getCurrentScene()->getItemFromScene_index(index)->listInteractionTypes().size();
+		for (int i = 0; i < numberOfInteractions; i++)
+		{
+			std::cout << std::to_string(i + 1) << " " << getCurrentScene()->getItemFromScene_index(index)->listInteractionTypes()[i] << std::endl;
+		}
+		std::cout << std::to_string(numberOfInteractions + 1) << " return to scene" << std::endl;
+
+		int playerInputInteraction = input.playerInputNumbers(1, numberOfInteractions + 1) - 1;
+		if (playerInputInteraction == numberOfInteractions) interactinWithObject = false;
+		else
+		{
+			std::string type = getCurrentScene()->getItemFromScene_index(index)->listInteractionTypes()[playerInputInteraction];
+			getCurrentScene()->getItemFromScene_index(index)->startInteraction(type);
+			std::string message = getCurrentScene()->getItemFromScene_index(index)->returnInteractionMessage();
+			std::cout << message << std::endl;
+		}
+	}
+}

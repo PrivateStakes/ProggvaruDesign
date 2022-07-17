@@ -43,4 +43,6 @@ public:
 
 	int getIdIncrementTracker();
 	void setIdIncrementTracker(int);
+
+	void handleInteractions(InputSanitizer input, int index);
 };
