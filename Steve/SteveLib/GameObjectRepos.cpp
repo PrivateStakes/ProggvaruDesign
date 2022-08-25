@@ -103,7 +103,7 @@ std::string GameObjectRepos::getObjectName(int index)
 	}
 	else
 	{
-		name = gameObjectHolder[index - 1]->getName();
+		name = gameObjectHolder[index]->getName();
 	}
 	return name;
 }
