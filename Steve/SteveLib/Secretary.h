@@ -16,4 +16,5 @@ public:
 	std::vector<std::string> getAllTopNotification();
 	void getNotifcation();
 	void getAllNotifcations();
+	int getNotificationAmount();
 };

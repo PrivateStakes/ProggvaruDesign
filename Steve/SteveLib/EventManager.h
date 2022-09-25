@@ -6,6 +6,7 @@
 
 class Event;
 class GameElement;
+class Notification;
 
 class EventManager
 {
@@ -17,6 +18,7 @@ public:
 	~EventManager();
 
 	Event* createEvent(NotificationType);
+	Notification* getNotification(int index = 0);
 	void listAffectedEvents(std::string eventCondition);
 	void triggerEvents(NotificationType eventCondition);
 	bool triggerSpecificElement(int);	//requires ID of element

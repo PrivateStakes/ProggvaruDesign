@@ -18,17 +18,23 @@ EventManager::~EventManager()
 	}
 }
 
-inline Event* EventManager::createEvent(NotificationType eventType)
+Event* EventManager::createEvent(NotificationType eventType)
 {
 	eventContainer.push_back(new Event(eventType));
 	return eventContainer[eventContainer.size()-1];
 }
 
-inline void EventManager::listAffectedEvents(std::string eventCondition)
+Notification* EventManager::getNotification(int index)
 {
+	return eventContainer[index]->readNotification();
 }
 
-inline void EventManager::triggerEvents(NotificationType eventCondition)
+void EventManager::listAffectedEvents(std::string eventCondition)
+{
+
+}
+
+void EventManager::triggerEvents(NotificationType eventCondition)
 {
 	for (int i = 0; i < eventContainer.size(); i++)
 	{

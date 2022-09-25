@@ -31,12 +31,12 @@ void Event::setEventType(NotificationType input)
 	eventType = input;
 }
 
-inline NotificationType Event::getEventType()
+NotificationType Event::getEventType()
 {
 	return eventType;
 }
 
-inline bool Event::createNotification(NotificationType notificationType)
+bool Event::createNotification(NotificationType notificationType)
 {
 	std::string notificationMessage = "";
 

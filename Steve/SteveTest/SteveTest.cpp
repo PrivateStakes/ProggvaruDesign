@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "CppUnitTest.h"
 #include "Game.h"
+#include "EventManager.h"
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
@@ -13,8 +14,13 @@ namespace SteveTest
 		TEST_METHOD(SendAndRecieveEvents)	//KJE
 		{
 			//pretty self explanatory
-
-			Assert::IsTrue(true);
+			EventManager eventManager;
+			eventManager.createEvent(NotificationType::elementMoved);
+			eventManager.triggerEvents(NotificationType::elementMoved);
+			Notification* notification = eventManager.getNotification();
+			std::string result = notification->getNotificationMessage();
+			
+			Assert::AreEqual("Something moved to another scene", result.c_str());
 		}
 
 		TEST_METHOD(TestAllInteractions)
@@ -27,6 +33,7 @@ namespace SteveTest
 		TEST_METHOD(CharacterPlayerNotificationSystem)
 		{
 			//character sends a notification to the player/secretary
+			Character character("Steve");
 
 			Assert::IsTrue(true);
 		}
@@ -34,12 +41,23 @@ namespace SteveTest
 		TEST_METHOD(SecretaryNotificationRelay)
 		{
 			//access secretary options and relay to player
-			//Secretary secretary;
+			Secretary secretary;
+			for (int i = 0; i < 10; i++)
+			{
+				secretary.addNotification("Message: " + std::to_string(i));
+			}
+
+			for (int i = 0; i < 10; i++)
+			{
+				secretary.getNotifcation();
+			}
+
+			int messagesLeft = secretary.getNotificationAmount();
+			Assert::AreEqual(0, messagesLeft);
+
 			//secretary.addNotification("There is a new crime scene nearby");
-			//std::string message = "";// secretary.getTopNotification();
-			//Assert::IsTrue(message!="");
-			//Assert::AreEqual("There is a new crime scene nearby", "");
-			Assert::IsTrue(true);
+			//std::string message = secretary.getTopNotification();
+			//Assert::AreEqual("There is a new crime scene nearby", message.c_str());
 		}
 
 		TEST_METHOD(MoveGameElement)	//KJE

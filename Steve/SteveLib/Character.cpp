@@ -11,17 +11,17 @@ Character::~Character()
 {
 }
 
-inline void Character::sendPlayerNotification(Notification notification)
+void Character::sendPlayerNotification(Notification notification)
 {
 	std::cout << notification.getNotificationMessage();
 }
 
-inline void Character::setMessage(Notification notification, std::string message)
+void Character::setMessage(Notification notification, std::string message)
 {
 	notification.setMessage(message, (NotificationType)0);
 }
 
-inline std::string Character::askQuestion(std::string text)
+std::string Character::askQuestion(std::string text)
 {
 	std::string response = "";
 

@@ -88,3 +88,8 @@ void Secretary::getAllNotifcations()
 		notifications.pop_back();
 	}
 }
+
+int Secretary::getNotificationAmount()
+{
+	return notifications.size();
+}

@@ -14,7 +14,7 @@ std::string Notification::getNotificationMessage()
 	return message;
 }
 
-inline void Notification::setMessage(std::string newMessage, NotificationType input)
+void Notification::setMessage(std::string newMessage, NotificationType input)
 {
 	message = newMessage;
 	notificationType = input;
