@@ -46,6 +46,13 @@ void GameObjectRepos::addGameObject(Game* input)
 	input->setIdIncrementTracker(input->getIdIncrementTracker() + 1);
 }
 
+void GameObjectRepos::addGameObject(Game* input, GameObject* gameObj)
+{
+	gameObjectHolder.push_back(gameObj);
+	gameObjectHolder.back()->setId(input->getIdIncrementTracker());
+	input->setIdIncrementTracker(input->getIdIncrementTracker() + 1);
+}
+
 inline void GameObjectRepos::removeGameObject(std::string name)
 {
 	for (int i = 0; i < gameObjectHolder.size(); i++)
@@ -63,7 +70,7 @@ inline void GameObjectRepos::removeGameObject(std::string name)
 	}
 }
 
-inline void GameObjectRepos::removeGameObject_index(int index)
+void GameObjectRepos::removeGameObject_index(int index)
 {
 	if (index < gameObjectHolder.size())
 	{
@@ -75,6 +82,16 @@ inline void GameObjectRepos::removeGameObject_index(int index)
 		gameObjectHolder.back() = nullptr;
 	}
 	else std::cout << "no such object was found" << std::endl;
+}
+
+void GameObjectRepos::removeObjectFromRepo(int index)
+{
+	for (int i = index; i < gameObjectHolder.size()-1; i++)
+	{
+		gameObjectHolder[i] = gameObjectHolder[i + 1];
+	}
+	gameObjectHolder[gameObjectHolder.size()-1] = nullptr;
+	gameObjectHolder.pop_back();
 }
 
 std::string GameObjectRepos::listAllElements()

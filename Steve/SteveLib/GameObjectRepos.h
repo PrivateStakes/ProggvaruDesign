@@ -20,8 +20,10 @@ public:
 	GameObject* getGameObject_index(int index);
 
 	void addGameObject(Game*);
+	void addGameObject(Game* input, GameObject* gameObj);
 	void removeGameObject(std::string name);
 	void removeGameObject_index(int index);
+	void removeObjectFromRepo(int index);
 
 	std::string listAllElements();
 	int getGameObjectHolderSize();

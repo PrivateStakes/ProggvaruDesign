@@ -34,9 +34,11 @@ public:
 	Scene* getCurrentScene();
 	void setCurrentScene(int);	//creates a version for game to have as its currentScene
 	int getAllScenesSize();
+	std::vector<Scene*> getAllScenes();
 	void createScene();
 
 	GameObject* getItemFromScene(int x, WhichScene scene);
+	void removeItem(int x, WhichScene scene);
 	EventManager* getEventManager();
 
 	void updateEvents();

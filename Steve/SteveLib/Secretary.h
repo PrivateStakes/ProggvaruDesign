@@ -9,8 +9,11 @@ private:
 	std::vector<Notification> notifications;
 
 public:
+	Secretary(std::string name = "Alex");
 	void addNotification(std::string message);
 	void addNotification(Notification &notification);
+	std::string getTopNotification();
+	std::vector<std::string> getAllTopNotification();
 	void getNotifcation();
 	void getAllNotifcations();
 };

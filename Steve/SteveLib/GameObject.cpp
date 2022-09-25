@@ -26,7 +26,7 @@ GameObject::GameObject(Game* game)
 		break;
 
 	default:
-		setName("YOU_FUCKED_UP");
+		setName("N/A");
 		break;
 	}
 

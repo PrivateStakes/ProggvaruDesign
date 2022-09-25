@@ -62,12 +62,23 @@ inline GameObject* Scene::getItemFromScene(std::string input)
 
 GameObject* Scene::getItemFromScene_index(int index)
 {
+	if (index >= gameObjectRepos->getGameObjectHolderSize()) return nullptr;
 	return gameObjectRepos->getGameObject_index(index);
 }
 
 void Scene::addItemInScene(Game* input)
 {
 	gameObjectRepos->addGameObject(input);
+}
+
+void Scene::addItemInScene(Game* input, GameObject* gameObj)
+{
+	gameObjectRepos->addGameObject(input, gameObj);
+}
+
+void Scene::removeItemInScene(int index)
+{
+	gameObjectRepos->removeObjectFromRepo(index);
 }
 
 inline GameObject* Scene::getCharacterFromScene(std::string)

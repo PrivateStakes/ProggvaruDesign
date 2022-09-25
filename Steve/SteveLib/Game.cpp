@@ -14,9 +14,7 @@ Game::Game() :
 
 Game::~Game()
 {
-	delete currentScene;
-	currentScene = nullptr;
-
+	//We do not have to delete currentScene since it is either playerInventory or in allScenes
 	delete playerInventory;
 	playerInventory = nullptr;
 
@@ -58,12 +56,17 @@ int Game::getAllScenesSize()
 	return allScenes.size();
 }
 
+std::vector<Scene*> Game::getAllScenes()
+{
+	return allScenes;
+}
+
 void Game::createScene()
 {
 	allScenes.push_back(new Scene(this));
 }
 
-inline GameObject* Game::getItemFromScene(int x, WhichScene scene)
+GameObject* Game::getItemFromScene(int x, WhichScene scene)
 {
 	switch (scene)
 	{
@@ -75,6 +78,21 @@ inline GameObject* Game::getItemFromScene(int x, WhichScene scene)
 		break;
 	default:
 		return nullptr;
+		break;
+	}
+}
+
+void Game::removeItem(int x, WhichScene scene)
+{
+	switch (scene)
+	{
+	case WhichScene::e_currentScene:
+		currentScene->removeItemInScene(x);
+		break;
+	case WhichScene::e_playerInventory:
+		playerInventory->removeItemInScene(x);
+		break;
+	default:
 		break;
 	}
 }

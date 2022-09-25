@@ -2,9 +2,11 @@
 #pragma once
 #include <iostream>
 #include "GameObject.h"
+#include "Secretary.h"
 
 class GameObjectRepos;
 class Game;
+class Secretary;
 
 class Scene
 {
@@ -30,6 +32,8 @@ public:
 	GameObject* getItemFromScene(std::string);
 	GameObject* getItemFromScene_index(int index);
 	void addItemInScene(Game*);
+	void addItemInScene(Game* input, GameObject* gameObj);
+	void removeItemInScene(int index);
 
 	virtual GameObject* getCharacterFromScene(std::string);
 	virtual GameObject* getCharacterFromScene_index(int index);
