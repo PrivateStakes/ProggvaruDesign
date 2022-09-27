@@ -23,7 +23,7 @@ namespace SteveTest
 			Assert::AreEqual("Something moved to another scene", result.c_str());
 		}
 
-		TEST_METHOD(TestAllInteractions)
+		TEST_METHOD(ListAllInteractions)
 		{
 			//all interacrtion functionalities: flavourtext, move item, turn on/off
 			
@@ -52,6 +52,7 @@ namespace SteveTest
 				secretary.getNotifcation();
 			}
 
+			//If we have gone through every single notification there should be none left
 			int messagesLeft = secretary.getNotificationAmount();
 			Assert::AreEqual(0, messagesLeft);
 
@@ -87,6 +88,16 @@ namespace SteveTest
 			if (gameElement == gameElementTwo) sameItem = true;
 
 			Assert::IsTrue(sameItem);
+		}
+
+		TEST_METHOD(FalseStatement)
+		{
+			Assert::IsFalse(false);
+		}
+
+		TEST_METHOD(ListInteractionOptions)
+		{
+			Assert::IsTrue(true);
 		}
 	};
 }
