@@ -23,11 +23,38 @@ namespace SteveTest
 			Assert::AreEqual("Something moved to another scene", result.c_str());
 		}
 
-		TEST_METHOD(ListAllInteractions)
+		TEST_METHOD(TestAllInteractions)
 		{
 			//all interacrtion functionalities: flavourtext, move item, turn on/off
+			Game game;
+			GameObject obj1(&game);
+
+			//These are the interactions that should be available to us
+			std::vector<std::string> interactions;
+			interactions.push_back("Open");
+			interactions.push_back("Move");
+			interactions.push_back("TurnOn");
+			interactions.push_back("TurnOff");
+			interactions.push_back("Taste");
 			
-			Assert::IsTrue(true);
+			//These are the interactions that are available to us
+			std::vector<std::string> interactionTypes = obj1.listInteractionTypes();
+
+			//Convert them to strings to compare them
+			std::string expectedString;
+			for (int i = 0; i < interactions.size(); i++)
+			{
+				expectedString += interactions[i];
+			}
+			
+			std::string returnedString;
+			for (int i = 0; i < interactionTypes.size(); i++)
+			{
+				returnedString += interactionTypes[i];
+			}
+		
+			//Check whether they are the same or not
+			Assert::AreEqual(expectedString.c_str(), returnedString.c_str());
 		}
 
 		TEST_METHOD(CharacterPlayerNotificationSystem)
@@ -55,10 +82,6 @@ namespace SteveTest
 			//If we have gone through every single notification there should be none left
 			int messagesLeft = secretary.getNotificationAmount();
 			Assert::AreEqual(0, messagesLeft);
-
-			//secretary.addNotification("There is a new crime scene nearby");
-			//std::string message = secretary.getTopNotification();
-			//Assert::AreEqual("There is a new crime scene nearby", message.c_str());
 		}
 
 		TEST_METHOD(MoveGameElement)	//KJE
@@ -75,7 +98,7 @@ namespace SteveTest
 			game.getCurrentScene()->addItemInScene(&game);
 
 			gameElement = game.getItemFromScene(0, WhichScene::e_currentScene);
-			game.removeItem(0, WhichScene::e_currentScene);
+			game.removeItem(0, WhichScene::e_currentScene); //Remove item from scene since we want to move it to another scene
 
 			//Creates second scene and adds the item from first scene to it
 			game.createScene();
