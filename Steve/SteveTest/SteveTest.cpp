@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "CppUnitTest.h"
 #include "Game.h"
+#include "Inventory.h"
 #include "EventManager.h"
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
@@ -61,8 +62,19 @@ namespace SteveTest
 		{
 			//character sends a notification to the player/secretary
 			Character character("Steve");
+			Secretary secretary("Alex");
 
-			Assert::IsTrue(true);
+			//We ask the character "Steve" a question
+			std::string answer = character.askQuestion("Hello, we are here to solve the mystery");
+			
+			//The secretary saves the answer to relay it to the player
+			secretary.addNotification(answer);
+
+			//If everything goes as plans, the charcter "Steve" should repond with this
+			std::string expectedAnswer = "Thank you, I owe you all";
+			std::string returnedAnswer = secretary.getTopNotification();
+
+			Assert::AreEqual(expectedAnswer.c_str(), returnedAnswer.c_str());
 		}
 
 		TEST_METHOD(SecretaryNotificationRelay)
@@ -115,12 +127,39 @@ namespace SteveTest
 
 		TEST_METHOD(FalseStatement)
 		{
-			Assert::IsFalse(false);
+			//This creates a TV object
+			GameObject* gameObj = new GameObject(nullptr, 1);
+			
+			//Here we interact with the ocbject
+			gameObj->startInteraction("TV", "Taste");
+			
+			std::string expectedAnswer = "It worked!";
+			std::string returnedAnswer = gameObj->returnInteractionMessage();
+			
+			bool areSame = expectedAnswer == returnedAnswer;
+
+			Assert::IsFalse(areSame);
 		}
 
-		TEST_METHOD(ListInteractionOptions)
+		TEST_METHOD(TestInventory)
 		{
-			Assert::IsTrue(true);
+			//Creates a game that can hold the inventory
+			Game game;
+			Inventory* inventory = game.getInventory();
+
+			//Creates an item for us to test this use case
+			GameObject* cheese = new GameObject(&game, 0);
+
+			//Adds the cheese to the inventory
+			inventory->addCharacterInScene(cheese);
+
+			//Gets the latest added item from the inventory
+			GameObject* itemInInventory = inventory->getItemFromScene_index(inventory->getGameObjectHolderSize() - 1);
+
+			bool areEqual = cheese == itemInInventory;
+
+			//Compares to see if we managed to add and retreive the same item
+			Assert::IsTrue(areEqual);
 		}
 	};
 }

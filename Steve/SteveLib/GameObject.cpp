@@ -33,6 +33,30 @@ GameObject::GameObject(Game* game)
 	myGame = game;
 }
 
+GameObject::GameObject(Game* game, int number)
+{
+	switch (number)
+	{
+	case cheese:
+		setName("cheese");
+		break;
+
+	case TV:
+		setName("TV");
+		break;
+
+	case closet:
+		setName("closet");
+		break;
+
+	default:
+		setName("N/A");
+		break;
+	}
+
+	myGame = game;
+}
+
 GameObject::~GameObject()
 {
 	myGame = nullptr;
@@ -52,27 +76,27 @@ void GameObject::startInteraction(string object, string theInteractionType)
 {
 	if (theInteractionType == "Open")
 	{
-		Open open(object);
+		Open open(this->getName());
 		interactionMessage = open.getMessage();
 	}
 	else if (theInteractionType == "Move")
 	{
-		Move move(object);
+		Move move(this->getName());
 		interactionMessage = move.getMessage();
 	}
 	else if (theInteractionType == "TurnOn")
 	{
-		TurnOn turnOn(object);
+		TurnOn turnOn(this->getName());
 		interactionMessage = turnOn.getMessage();
 	}
 	else if (theInteractionType == "TurnOff")
 	{
-		TurnOff turnOff(object);
+		TurnOff turnOff(this->getName());
 		interactionMessage = turnOff.getMessage();
 	}
 	else if (theInteractionType == "Taste")
 	{
-		Taste taste(object);
+		Taste taste(this->getName());
 		interactionMessage = taste.getMessage();
 	}
 	else

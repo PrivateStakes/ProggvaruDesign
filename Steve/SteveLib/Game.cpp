@@ -35,7 +35,7 @@ int Game::randomNumberGenerator(int low, int high)
 	return distr(gen);
 }
 
-inline Inventory* Game::getInventory()
+Inventory* Game::getInventory()
 {
 	return playerInventory;
 }

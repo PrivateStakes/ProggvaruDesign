@@ -25,8 +25,8 @@ std::string Character::askQuestion(std::string text)
 {
 	std::string response = "";
 
-	if (text == "hello?") response = "hello luv";
-	else response = "Bad choice bitzzz";
+	if (text == "Hello, we are here to solve the mystery") response = "Thank you, I owe you all";
+	else response = "What did you say again?";
 
 	return response;
 }

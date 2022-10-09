@@ -17,7 +17,7 @@ GameObjectRepos::~GameObjectRepos()
 	}
 }
 
-inline GameObject* GameObjectRepos::getGameObject(string gameElementName)
+GameObject* GameObjectRepos::getGameObject(string gameElementName)
 {
 	GameObject* returnObject = nullptr;
 
@@ -53,7 +53,7 @@ void GameObjectRepos::addGameObject(Game* input, GameObject* gameObj)
 	input->setIdIncrementTracker(input->getIdIncrementTracker() + 1);
 }
 
-inline void GameObjectRepos::removeGameObject(std::string name)
+void GameObjectRepos::removeGameObject(std::string name)
 {
 	for (int i = 0; i < gameObjectHolder.size(); i++)
 	{

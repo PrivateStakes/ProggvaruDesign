@@ -28,7 +28,7 @@ int Scene::getGameObjectHolderSize()
 	return gameObjectRepos->getGameObjectHolderSize();
 }
 
-inline std::string Scene::listAllCharacters()
+std::string Scene::listAllCharacters()
 {
 	return "none";
 	//list all elements through characterRepos also
@@ -39,23 +39,23 @@ int Scene::getCharacterHolderSize()
 	return 0;
 }
 
-inline bool Scene::isAvailable(std::string name)
+bool Scene::isAvailable(std::string name)
 {
 	return true;
 }
 
-inline bool Scene::isGameObject(std::string name)
+bool Scene::isGameObject(std::string name)
 {
 	if (gameObjectRepos->getGameObject(name) != nullptr) return true;
 	else return false;
 }
 
-inline bool Scene::isCharacter(std::string name)
+bool Scene::isCharacter(std::string name)
 {
 	return false;
 }
 
-inline GameObject* Scene::getItemFromScene(std::string input)
+GameObject* Scene::getItemFromScene(std::string input)
 {
 	return gameObjectRepos->getGameObject(input);
 }
@@ -81,17 +81,17 @@ void Scene::removeItemInScene(int index)
 	gameObjectRepos->removeObjectFromRepo(index);
 }
 
-inline GameObject* Scene::getCharacterFromScene(std::string)
+GameObject* Scene::getCharacterFromScene(std::string)
 {
 	return nullptr;
 }
 
-inline GameObject* Scene::getCharacterFromScene_index(int index)
+GameObject* Scene::getCharacterFromScene_index(int index)
 {
 	return nullptr;
 }
 
-inline void Scene::addCharacterInScene(GameObject)
+void Scene::addCharacterInScene(GameObject* obj)
 {
 
 }

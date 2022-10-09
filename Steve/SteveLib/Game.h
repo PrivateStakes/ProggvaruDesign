@@ -1,6 +1,6 @@
 #include "pch.h"
 #include "InputSanitizer.h"
-#include "Scene.h"
+#include "Inventory.h"
 #pragma once
 
 class Inventory;
