@@ -9,12 +9,14 @@
 *.user
 *.userosscache
 *.sln.docstates
-
-# User-specific files (MonoDevelop/Xamarin Studio)
+*.vcxproj.filters
+*.vcxproj
+*.filters
 *.userprefs
 
 # Mono auto generated files
 mono_crash.*
+
 
 # Build results
 [Dd]ebug/
