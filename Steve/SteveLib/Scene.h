@@ -37,7 +37,7 @@ public:
 
 	virtual GameObject* getCharacterFromScene(std::string);
 	virtual GameObject* getCharacterFromScene_index(int index);
-	virtual void addCharacterInScene(GameObject);
+	virtual void addCharacterInScene(GameObject* obj);
 
 	std::string selectObject(int index);
 };

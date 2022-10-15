@@ -17,6 +17,7 @@ private:
 
 public:
 	GameObject(Game* game);
+	GameObject(Game* game, int number);
 	~GameObject();
 
 	std::vector<std::string> listInteractionTypes();

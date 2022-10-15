@@ -9,18 +9,18 @@ Scene(game)
 {
 }
 
-GameObject* Inventory::getCharacterFromScene(std::string)
+GameObject* Inventory::getCharacterFromScene(std::string name)
 {
-	return nullptr;
+	return this->gameObjectRepos->getGameObject(name);
 }
 
 GameObject* Inventory::getCharacterFromScene_index(int index)
 {
-	return nullptr;
+	return this->gameObjectRepos->getGameObject_index(index);
 }
 
-void Inventory::addCharacterInScene(GameObject)
+void Inventory::addCharacterInScene(GameObject* object)
 {
-	//nope
+	this->gameObjectRepos->addGameObject(this->myGame, object);
 }
 	
