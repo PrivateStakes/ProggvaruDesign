@@ -17,8 +17,6 @@ Event::Event(NotificationType typeOfEvent) :
 
 Event::~Event()
 {
-	gamemeElement = nullptr;
-	
 	if (notification != nullptr)
 	{
 		delete notification;

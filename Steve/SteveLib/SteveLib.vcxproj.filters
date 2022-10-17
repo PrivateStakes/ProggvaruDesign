@@ -13,14 +13,11 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="InteractionTypes">
+      <UniqueIdentifier>{75efcf75-99f1-4b5e-ac1b-1537877d0eb0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="framework.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="pch.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Character.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -28,9 +25,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="EventManager.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Father.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Game.h">
@@ -48,25 +42,10 @@
     <ClInclude Include="InteractionType.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Move.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Notification.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Open.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Scene.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Taste.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="TurnOff.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="TurnOn.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Inventory.h">
@@ -84,11 +63,32 @@
     <ClInclude Include="Secretary.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="TurnOn.h">
+      <Filter>InteractionTypes</Filter>
+    </ClInclude>
+    <ClInclude Include="Taste.h">
+      <Filter>InteractionTypes</Filter>
+    </ClInclude>
+    <ClInclude Include="TurnOff.h">
+      <Filter>InteractionTypes</Filter>
+    </ClInclude>
+    <ClInclude Include="Move.h">
+      <Filter>InteractionTypes</Filter>
+    </ClInclude>
+    <ClInclude Include="Open.h">
+      <Filter>InteractionTypes</Filter>
+    </ClInclude>
+    <ClInclude Include="Father.h">
+      <Filter>InteractionTypes</Filter>
+    </ClInclude>
+    <ClInclude Include="framework.h">
+      <Filter>Resource Files</Filter>
+    </ClInclude>
+    <ClInclude Include="pch.h">
+      <Filter>Resource Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="pch.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Character.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -96,9 +96,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="EventManager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Father.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Game.cpp">
@@ -116,28 +113,13 @@
     <ClCompile Include="InteractionType.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Move.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Notification.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Open.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Scene.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="SteveLib.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Taste.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="TurnOff.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="TurnOn.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Inventory.cpp">
@@ -151,6 +133,27 @@
     </ClCompile>
     <ClCompile Include="Secretary.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Move.cpp">
+      <Filter>InteractionTypes</Filter>
+    </ClCompile>
+    <ClCompile Include="Open.cpp">
+      <Filter>InteractionTypes</Filter>
+    </ClCompile>
+    <ClCompile Include="Taste.cpp">
+      <Filter>InteractionTypes</Filter>
+    </ClCompile>
+    <ClCompile Include="TurnOff.cpp">
+      <Filter>InteractionTypes</Filter>
+    </ClCompile>
+    <ClCompile Include="TurnOn.cpp">
+      <Filter>InteractionTypes</Filter>
+    </ClCompile>
+    <ClCompile Include="Father.cpp">
+      <Filter>InteractionTypes</Filter>
+    </ClCompile>
+    <ClCompile Include="pch.cpp">
+      <Filter>Resource Files</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

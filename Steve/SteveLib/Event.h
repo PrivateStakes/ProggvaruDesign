@@ -10,7 +10,6 @@ class Event
 {
 private:
 	NotificationType eventType;
-	GameElement* gamemeElement;
 	int elementId;
 	Notification* notification;
 
