@@ -51,6 +51,11 @@ inline void GameElement::generateEvent(EventManager eventManager, NotificationTy
 	myEvent->setId(id);
 }
 
+NotificationType GameElement::getEventType()
+{
+	return myEvent->getEventType();
+}
+
 void GameElement::removeEvent()
 {
 	myEvent = nullptr;

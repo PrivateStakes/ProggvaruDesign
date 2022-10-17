@@ -57,6 +57,15 @@ GameObject::GameObject(Game* game, int number)
 	myGame = game;
 }
 
+//GameObject::GameObject(Game* game, GameObject* gameObject)
+//{
+//	myGame = game;
+//	interactionTypes = gameObject->getInteractionTypes();
+//	interactionMessage = gameObject->getInteractionMessage();
+//	isOn = gameObject->getIsOn();
+//	setName(gameObject->getName());
+//}
+
 GameObject::~GameObject()
 {
 	myGame = nullptr;
@@ -117,42 +126,25 @@ inline void GameObject::setCurrentInteractionOptions(string theOptions)
 
 inline void GameObject::startCurrentInteraction()
 {
-	//myGame->getEventManager()->createEvent("ur mum gay");
-	//myGame->getEventManager()->clearEvent("ur mum gay");
-	//std::string interaction = interactionTypes->getInteraction();
-	std::string interaction = "";
-	if (interaction == "Open")
-	{
-		Open open;
-		interactionMessage = open.getMessage();
-	}
-	else if (interaction == "Move")
-	{
-		Move move("TV");
-		interactionMessage = move.getMessage();
-	}
-	else if (interaction == "TurnOn")
-	{
-		TurnOn turnOn;
-		interactionMessage = turnOn.getMessage();
-	}
-	else if (interaction == "TurnOff")
-	{
-		TurnOff turnOff;
-		interactionMessage = turnOff.getMessage();
-	}
-	else if (interaction == "Taste")
-	{
-		Taste taste;
-		interactionMessage = taste.getMessage();
-	}
-	else
-	{
-		interactionMessage = "E du dum i hövve? Detta kan du int gör";
-	}
+	
 }
 
 inline void GameObject::abortCurrentInteraction()
 {
 
+}
+
+InteractionType* GameObject::getInteractionTypes()
+{
+	return interactionTypes;
+}
+
+std::string GameObject::getInteractionMessage()
+{
+	return interactionMessage;
+}
+
+bool GameObject::getIsOn()
+{
+	return isOn;
 }

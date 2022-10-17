@@ -3,6 +3,7 @@
 #include "Game.h"
 #include "GameObjectRepos.h"
 #include "GameObject.h"
+#include "Secretary.h"
 
 Scene::Scene(Game* game) :
 	myGame(game)
@@ -78,7 +79,7 @@ void Scene::addItemInScene(Game* input, GameObject* gameObj)
 
 void Scene::removeItemInScene(int index)
 {
-	gameObjectRepos->removeObjectFromRepo(index);
+	gameObjectRepos->removeGameObject_index(index);
 }
 
 GameObject* Scene::getCharacterFromScene(std::string)

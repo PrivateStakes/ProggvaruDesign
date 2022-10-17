@@ -3,6 +3,7 @@
 #include "Inventory.h"
 #include "InputSanitizer.h"
 #include "Notification.h"
+#include "Secretary.h"
 #include <random>
 
 Game::Game() : 
@@ -10,10 +11,14 @@ Game::Game() :
 	idIncrementTracker(0)
 {
 	playerInventory = new Inventory(this);
+	secretary = new Secretary();
 }
 
 Game::~Game()
 {
+	delete secretary;
+	secretary = nullptr;
+
 	//We do not have to delete currentScene since it is either playerInventory or in allScenes
 	delete playerInventory;
 	playerInventory = nullptr;
@@ -102,14 +107,59 @@ inline EventManager* Game::getEventManager()
 	return eventManager;
 }
 
-void updateEventsInScene(Scene* input)
+void Game::updateEventsInScene(Scene* input)
 {
 	for (int i = 0; i < input->getGameObjectHolderSize(); i++)
 	{
 		if (input->getItemFromScene_index(i)->hasNotification())
 		{
+			bool elementAdded = false;
 
-			std::cout << input->getItemFromScene_index(i)->getNotification()->getNotificationMessage();
+			switch (input->getItemFromScene_index(i)->getEventType())
+			{
+			case NotificationType::elementMoved:
+				while (!elementAdded)
+				{
+					int randomScene = randomNumberGenerator(0, allScenes.size());
+					if (allScenes[randomScene] != input)
+					{
+						allScenes[randomScene]->addItemInScene(this, input->getItemFromScene_index(i));
+						input->removeItemInScene(i);
+						elementAdded = true;
+					}
+				}
+				break;
+
+			case NotificationType::elementOptionsExtended:	//useless, they always have all optíons available
+				break;
+
+			case NotificationType::addNewElement:
+				
+				while (!elementAdded)
+				{
+					int randomScene = randomNumberGenerator(0, allScenes.size());
+					if (allScenes[randomScene] != currentScene)
+					{
+						allScenes[randomScene]->addItemInScene(this);
+						elementAdded = true;
+					}
+				}
+				break;
+
+			case NotificationType::addNewScene:
+				createScene();
+				for (int j = 0; j < randomNumberGenerator(1, 5); j++)
+				{
+					allScenes.back()->addItemInScene(this);
+				}
+				break;
+
+			case NotificationType::addObjectToInventory:
+				playerInventory->addItemInScene(this, input->getItemFromScene_index(i));	//NOTE: needs rework
+				input->removeItemInScene(i);
+				break;
+			}
+			secretary->addNotification(input->getItemFromScene_index(i)->getNotification()->getNotificationMessage());
 		}
 	}
 
@@ -118,7 +168,7 @@ void updateEventsInScene(Scene* input)
 		if (input->getCharacterFromScene_index(i)->hasNotification())
 		{
 			//do shit here
-			std::cout << input->getCharacterFromScene_index(i)->getNotification()->getNotificationMessage();
+			secretary->addNotification(input->getItemFromScene_index(i)->getNotification()->getNotificationMessage());
 		}
 	}
 }

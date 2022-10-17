@@ -2,11 +2,9 @@
 #pragma once
 #include <iostream>
 #include "GameObject.h"
-#include "Secretary.h"
 
 class GameObjectRepos;
 class Game;
-class Secretary;
 
 class Scene
 {

@@ -3,6 +3,8 @@
 #include "Game.h"
 #include "Inventory.h"
 #include "EventManager.h"
+#include "Character.h"
+#include "Secretary.h"
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
@@ -96,7 +98,7 @@ namespace SteveTest
 			Assert::AreEqual(0, messagesLeft);
 		}
 
-		TEST_METHOD(MoveGameElement)	//KJE
+		TEST_METHOD(MoveGameElement)
 		{
 			//move game element from one scene to another
 			Game game;

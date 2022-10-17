@@ -28,6 +28,7 @@ public:
 	void setId(int);
 	std::string getName();
 	void generateEvent(EventManager eventManager, NotificationType);
+	NotificationType getEventType();
 	void removeEvent();
 };
 

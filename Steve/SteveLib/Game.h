@@ -7,6 +7,7 @@ class Inventory;
 class GameObject;
 class EventManager;
 class GameObjectRepos;
+class Secretary;
 
 enum class WhichScene
 {
@@ -21,8 +22,11 @@ private:
 	std::vector<Scene*> allScenes;
 	Inventory* playerInventory;
 	EventManager* eventManager;
+	Secretary* secretary;
 
 	int idIncrementTracker;
+
+	void updateEventsInScene(Scene* input);
 	
 public:
 	Game();

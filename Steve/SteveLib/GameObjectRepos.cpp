@@ -65,6 +65,7 @@ void GameObjectRepos::removeGameObject(std::string name)
 
 			delete gameObjectHolder.back();
 			gameObjectHolder.back() = nullptr;
+			gameObjectHolder.pop_back();
 		}
 		else if (i == gameObjectHolder.size() - 1) std::cout << "no such object was found" << std::endl;
 	}
@@ -80,18 +81,9 @@ void GameObjectRepos::removeGameObject_index(int index)
 
 		delete gameObjectHolder.back();
 		gameObjectHolder.back() = nullptr;
+		gameObjectHolder.pop_back();
 	}
 	else std::cout << "no such object was found" << std::endl;
-}
-
-void GameObjectRepos::removeObjectFromRepo(int index)
-{
-	for (int i = index; i < gameObjectHolder.size()-1; i++)
-	{
-		gameObjectHolder[i] = gameObjectHolder[i + 1];
-	}
-	gameObjectHolder[gameObjectHolder.size()-1] = nullptr;
-	gameObjectHolder.pop_back();
 }
 
 std::string GameObjectRepos::listAllElements()

@@ -18,6 +18,7 @@ private:
 public:
 	GameObject(Game* game);
 	GameObject(Game* game, int number);
+	//GameObject(Game* game, GameObject* gameObject);
 	~GameObject();
 
 	std::vector<std::string> listInteractionTypes();
@@ -27,4 +28,10 @@ public:
 	void setCurrentInteractionOptions(string theOptions);
 	void startCurrentInteraction();
 	void abortCurrentInteraction();
+
+
+	InteractionType* getInteractionTypes();
+	std::string getInteractionMessage();
+	bool getIsOn();
+
 };

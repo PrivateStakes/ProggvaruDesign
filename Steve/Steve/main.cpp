@@ -11,6 +11,14 @@ int main()
 	game.createScene();
 	game.createScene();
 
+	for (int i = 0; i < game.getAllScenesSize(); i++)
+	{
+		for (int j = 0; j < game.randomNumberGenerator(1, 5); j++)
+		{
+			game.getAllScenes()[i]->addItemInScene(&game);
+		}
+	}
+
 	bool gameOn = true;
 	while (gameOn)
 	{
@@ -27,22 +35,7 @@ int main()
 		game.setCurrentScene(inputSanitizer.playerInputNumbers(1, game.getAllScenesSize()) - 1);
 		if (game.getCurrentScene() == nullptr) std::cout << "Invalid scene!" << std::endl;
 
-		//generates a random amount of objects in the room
-		//NOTE: temporary, should be done individually for all rooms (except the Inverntory) upon generation
-		switch (game.randomNumberGenerator(0, 2))
-		{
-		case 0:
-			game.getCurrentScene()->addItemInScene(&game);
-			break;
-
-		case 1:
-			game.getCurrentScene()->addItemInScene(&game);
-			game.getCurrentScene()->addItemInScene(&game);
-			break;
-
-		default:
-			break;
-		}
+		game.updateEvents();
 
 		bool inScene = true;
 		while (inScene)
