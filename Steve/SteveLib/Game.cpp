@@ -219,5 +219,7 @@ void Game::handleInteractions(InputSanitizer input, int index)
 		}
 
 		updateEvents();
+		secretary->getAllNotifcations();
+		std::cout << "---------------------------------------" << std::endl;
 	}
 }
