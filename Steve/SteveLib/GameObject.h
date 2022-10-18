@@ -6,11 +6,11 @@
 
 using namespace std;
 class Game;
+class EventManager;
 
 class GameObject : public GameElement, public InteractionType
 {
 private:
-	InteractionType* interactionTypes;
 	std::string interactionMessage;
 	Game* myGame;
 	bool isOn = false;
@@ -18,6 +18,7 @@ private:
 public:
 	GameObject(Game* game);
 	GameObject(Game* game, int number);
+	GameObject(Game* game, GameObject* other);
 	//GameObject(Game* game, GameObject* gameObject);
 	~GameObject();
 
@@ -29,8 +30,6 @@ public:
 	void startCurrentInteraction();
 	void abortCurrentInteraction();
 
-
-	InteractionType* getInteractionTypes();
 	std::string getInteractionMessage();
 	bool getIsOn();
 

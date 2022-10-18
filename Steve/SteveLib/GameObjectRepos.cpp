@@ -48,42 +48,27 @@ void GameObjectRepos::addGameObject(Game* input)
 
 void GameObjectRepos::addGameObject(Game* input, GameObject* gameObj)
 {
-	gameObjectHolder.push_back(gameObj);
+	gameObjectHolder.push_back(new GameObject(input, gameObj));
+	//gameObjectHolder.back()->generateEvent(eventManager, gameObj->getEventType());
 	gameObjectHolder.back()->setId(input->getIdIncrementTracker());
 	input->setIdIncrementTracker(input->getIdIncrementTracker() + 1);
 }
 
-void GameObjectRepos::removeGameObject(std::string name)
-{
-	for (int i = 0; i < gameObjectHolder.size(); i++)
-	{
-		if (name == gameObjectHolder[i]->getName())
-		{
-			delete gameObjectHolder[i];
-			gameObjectHolder[i] = nullptr;
-			gameObjectHolder[i] = new GameObject(*gameObjectHolder.back());
-
-			delete gameObjectHolder.back();
-			gameObjectHolder.back() = nullptr;
-			gameObjectHolder.pop_back();
-		}
-		else if (i == gameObjectHolder.size() - 1) std::cout << "no such object was found" << std::endl;
-	}
-}
-
-void GameObjectRepos::removeGameObject_index(int index)
+void GameObjectRepos::removeGameObject_index(Game* input, int index)
 {
 	if (index < gameObjectHolder.size())
 	{
 		delete gameObjectHolder[index];
 		gameObjectHolder[index] = nullptr;
-		gameObjectHolder[index] = new GameObject(*gameObjectHolder.back());
+		gameObjectHolder[index] = new GameObject(input, gameObjectHolder.back());
+		//gameObjectHolder[index]->generateEvent(eventManager, NotificationType(gameObjectHolder.back()->getEventType()));
+		//NOTE: events need to be handled before removal to avoid circle-ref; can't be bothered to fix it
 
 		delete gameObjectHolder.back();
 		gameObjectHolder.back() = nullptr;
 		gameObjectHolder.pop_back();
 	}
-	else std::cout << "no such object was found" << std::endl;
+	else std::cerr << "no such object was found" << std::endl;
 }
 
 std::string GameObjectRepos::listAllElements()

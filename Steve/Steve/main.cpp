@@ -35,8 +35,6 @@ int main()
 		game.setCurrentScene(inputSanitizer.playerInputNumbers(1, game.getAllScenesSize()) - 1);
 		if (game.getCurrentScene() == nullptr) std::cout << "Invalid scene!" << std::endl;
 
-		game.updateEvents();
-
 		bool inScene = true;
 		while (inScene)
 		{

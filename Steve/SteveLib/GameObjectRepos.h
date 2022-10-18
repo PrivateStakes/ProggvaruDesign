@@ -5,6 +5,7 @@
 
 class GameObject;
 class Game;
+class EventManager;
 
 class GameObjectRepos
 {
@@ -21,8 +22,7 @@ public:
 
 	void addGameObject(Game*);
 	void addGameObject(Game* input, GameObject* gameObj);
-	void removeGameObject(std::string name);
-	void removeGameObject_index(int index);
+	void removeGameObject_index(Game* input, int index);
 
 	std::string listAllElements();
 	int getGameObjectHolderSize();

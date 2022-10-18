@@ -92,12 +92,14 @@ void Game::removeItem(int x, WhichScene scene)
 	switch (scene)
 	{
 	case WhichScene::e_currentScene:
+		if (currentScene->getItemFromScene_index(x)->hasNotification()) secretary->addNotification(currentScene->getItemFromScene_index(x)->getNotification()->getNotificationMessage());
+		currentScene->getItemFromScene_index(x)->removeEvent();
 		currentScene->removeItemInScene(x);
 		break;
 	case WhichScene::e_playerInventory:
+		if (playerInventory->getItemFromScene_index(x)->hasNotification()) secretary->addNotification(playerInventory->getItemFromScene_index(x)->getNotification()->getNotificationMessage());
+		playerInventory->getItemFromScene_index(x)->removeEvent();
 		playerInventory->removeItemInScene(x);
-		break;
-	default:
 		break;
 	}
 }
@@ -113,6 +115,9 @@ void Game::updateEventsInScene(Scene* input)
 	{
 		if (input->getItemFromScene_index(i)->hasNotification())
 		{
+			secretary->addNotification(input->getItemFromScene_index(i)->getNotification()->getNotificationMessage());
+			input->getItemFromScene_index(i)->removeEvent();
+
 			bool elementAdded = false;
 
 			switch (input->getItemFromScene_index(i)->getEventType())
@@ -133,7 +138,7 @@ void Game::updateEventsInScene(Scene* input)
 			case NotificationType::elementOptionsExtended:	//useless, they always have all optíons available
 				break;
 
-			case NotificationType::addNewElement:
+			case NotificationType::addNewElement:	//adds a new element to a random scene which isn't the current scene -> change to anywhere?
 				
 				while (!elementAdded)
 				{
@@ -155,11 +160,10 @@ void Game::updateEventsInScene(Scene* input)
 				break;
 
 			case NotificationType::addObjectToInventory:
-				playerInventory->addItemInScene(this, input->getItemFromScene_index(i));	//NOTE: needs rework
+				playerInventory->addItemInScene(this, input->getItemFromScene_index(i));
 				input->removeItemInScene(i);
 				break;
 			}
-			secretary->addNotification(input->getItemFromScene_index(i)->getNotification()->getNotificationMessage());
 		}
 	}
 
@@ -167,7 +171,7 @@ void Game::updateEventsInScene(Scene* input)
 	{
 		if (input->getCharacterFromScene_index(i)->hasNotification())
 		{
-			//do shit here
+			//character logic
 			secretary->addNotification(input->getItemFromScene_index(i)->getNotification()->getNotificationMessage());
 		}
 	}
@@ -197,19 +201,15 @@ void Game::handleInteractions(InputSanitizer input, int index)
 	std::string object = getCurrentScene()->selectObject(index);
 	std::cout << "You chose the " << object << ".\nThe interactions are: \n";
 
-	bool interactinWithObject = true;
-	while (interactinWithObject)
+	bool interactingWithObject = true;
+	while (interactingWithObject)
 	{
-		updateEvents();
 		const int numberOfInteractions = getCurrentScene()->getItemFromScene_index(index)->listInteractionTypes().size();
-		for (int i = 0; i < numberOfInteractions; i++)
-		{
-			std::cout << std::to_string(i + 1) << " " << getCurrentScene()->getItemFromScene_index(index)->listInteractionTypes()[i] << std::endl;
-		}
+		for (int i = 0; i < numberOfInteractions; i++) std::cout << std::to_string(i + 1) << " " << getCurrentScene()->getItemFromScene_index(index)->listInteractionTypes()[i] << std::endl;
 		std::cout << std::to_string(numberOfInteractions + 1) << " return to scene" << std::endl;
 
 		int playerInputInteraction = input.playerInputNumbers(1, numberOfInteractions + 1) - 1;
-		if (playerInputInteraction == numberOfInteractions) interactinWithObject = false;
+		if (playerInputInteraction == numberOfInteractions) interactingWithObject = false;
 		else
 		{
 			std::string type = getCurrentScene()->getItemFromScene_index(index)->listInteractionTypes()[playerInputInteraction];
@@ -217,5 +217,7 @@ void Game::handleInteractions(InputSanitizer input, int index)
 			std::string message = getCurrentScene()->getItemFromScene_index(index)->returnInteractionMessage();
 			std::cout << message << std::endl;
 		}
+
+		updateEvents();
 	}
 }

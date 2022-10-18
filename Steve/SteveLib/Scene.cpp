@@ -32,7 +32,6 @@ int Scene::getGameObjectHolderSize()
 std::string Scene::listAllCharacters()
 {
 	return "none";
-	//list all elements through characterRepos also
 }
 
 int Scene::getCharacterHolderSize()
@@ -79,22 +78,22 @@ void Scene::addItemInScene(Game* input, GameObject* gameObj)
 
 void Scene::removeItemInScene(int index)
 {
-	gameObjectRepos->removeGameObject_index(index);
+	gameObjectRepos->removeGameObject_index(myGame, index);
 }
 
-GameObject* Scene::getCharacterFromScene(std::string)
+GameObject* Scene::getCharacterFromScene(std::string name)
 {
-	return nullptr;
+	return this->gameObjectRepos->getGameObject(name);
 }
 
 GameObject* Scene::getCharacterFromScene_index(int index)
 {
-	return nullptr;
+	return this->gameObjectRepos->getGameObject_index(index);
 }
 
 void Scene::addCharacterInScene(GameObject* obj)
 {
-
+	this->gameObjectRepos->addGameObject(this->myGame,obj);
 }
 
 std::string Scene::selectObject(int index)

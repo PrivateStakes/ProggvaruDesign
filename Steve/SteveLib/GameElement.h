@@ -27,7 +27,7 @@ public:
 	int getId() const;
 	void setId(int);
 	std::string getName();
-	void generateEvent(EventManager eventManager, NotificationType);
+	void generateEvent(EventManager* eventManager, NotificationType);
 	NotificationType getEventType();
 	void removeEvent();
 };

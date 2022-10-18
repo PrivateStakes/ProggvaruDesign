@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "Game.h"
 #include "GameObject.h"
+#include "EventManager.h"
 
 enum
 {
@@ -57,14 +58,15 @@ GameObject::GameObject(Game* game, int number)
 	myGame = game;
 }
 
-//GameObject::GameObject(Game* game, GameObject* gameObject)
-//{
-//	myGame = game;
-//	interactionTypes = gameObject->getInteractionTypes();
-//	interactionMessage = gameObject->getInteractionMessage();
-//	isOn = gameObject->getIsOn();
-//	setName(gameObject->getName());
-//}
+GameObject::GameObject(Game* game, GameObject* other)
+{
+	myGame = game;
+	isOn = other->getIsOn();
+	interactionMessage = other->getInteractionMessage();
+
+	setId(other->getId());
+	setName(other->getName());
+}
 
 GameObject::~GameObject()
 {
@@ -132,11 +134,6 @@ inline void GameObject::startCurrentInteraction()
 inline void GameObject::abortCurrentInteraction()
 {
 
-}
-
-InteractionType* GameObject::getInteractionTypes()
-{
-	return interactionTypes;
 }
 
 std::string GameObject::getInteractionMessage()
