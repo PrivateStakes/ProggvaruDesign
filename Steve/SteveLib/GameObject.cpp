@@ -83,32 +83,42 @@ string GameObject::returnInteractionMessage()
 	return interactionMessage;
 }
 
+void GameObject::setEventManager(EventManager* eventManager)
+{
+	this->eventManager = eventManager;
+}
+
 void GameObject::startInteraction(string object, string theInteractionType)
 {
 	if (theInteractionType == "Open")
 	{
 		Open open(this->getName());
 		interactionMessage = open.getMessage();
+		if (this->getName() == "closet") this->generateEvent(this->eventManager, NotificationType::elementOpened);
 	}
 	else if (theInteractionType == "Move")
 	{
 		Move move(this->getName());
 		interactionMessage = move.getMessage();
+		if (this->getName() != "cheese") this->generateEvent(this->eventManager, NotificationType::elementInSceneMoved);
 	}
 	else if (theInteractionType == "TurnOn")
 	{
 		TurnOn turnOn(this->getName());
 		interactionMessage = turnOn.getMessage();
+		if (this->getName() == "TV") this->generateEvent(this->eventManager, NotificationType::elementTurnedOn);
 	}
 	else if (theInteractionType == "TurnOff")
 	{
 		TurnOff turnOff(this->getName());
 		interactionMessage = turnOff.getMessage();
+		if (this->getName() == "TV") this->generateEvent(this->eventManager, NotificationType::elementTurnedOff);
 	}
 	else if (theInteractionType == "Taste")
 	{
 		Taste taste(this->getName());
 		interactionMessage = taste.getMessage();
+		if (this->getName() == "cheese") this->generateEvent(this->eventManager, NotificationType::elementTasted);
 	}
 	else
 	{

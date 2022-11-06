@@ -17,13 +17,22 @@ namespace SteveTest
 		TEST_METHOD(SendAndRecieveEvents)	//KJE
 		{
 			//pretty self explanatory
+			Game game;
 			EventManager eventManager;
-			eventManager.createEvent(NotificationType::elementMoved);
-			eventManager.triggerEvents(NotificationType::elementMoved);
-			Notification* notification = eventManager.getNotification();
+			GameObject testObject(&game, 1); //Creates a TV in the scene
+			testObject.setEventManager(&eventManager);
+			testObject.startInteraction(testObject.getName(), "TurnOn");
+
+			Notification* notification = testObject.getNotification();
 			std::string result = notification->getNotificationMessage();
-			
-			Assert::AreEqual("Something moved to another scene", result.c_str());
+			bool expectedResult = false;
+			std::string message = notification->getNotificationMessage();
+			if (message == "When the object was turned on it gave some clues")
+			{
+				expectedResult = true;
+			}
+
+			Assert::IsTrue(expectedResult);
 		}
 
 		TEST_METHOD(TestAllInteractions)
@@ -118,7 +127,7 @@ namespace SteveTest
 			game.createScene();
 			game.setCurrentScene(1);
 			game.getCurrentScene()->addItemInScene(&game, gameElement);
-			
+
 			gameElementTwo = game.getItemFromScene(0, WhichScene::e_currentScene);
 
 			bool sameItem = false;

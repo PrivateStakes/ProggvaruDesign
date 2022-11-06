@@ -29,6 +29,7 @@ public:
 	std::string getName();
 	void generateEvent(EventManager* eventManager, NotificationType);
 	NotificationType getEventType();
+	void startEvent();
 	void removeEvent();
 };
 

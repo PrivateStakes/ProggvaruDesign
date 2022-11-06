@@ -45,15 +45,26 @@ void GameElement::setName(std::string input)
 	name = input;
 }
 
-inline void GameElement::generateEvent(EventManager* eventManager, NotificationType eventType)
+void GameElement::generateEvent(EventManager* eventManager, NotificationType eventType)
 {
 	myEvent = eventManager->createEvent(eventType);
 	myEvent->setId(id);
+	this->myEvent->createNotification(eventType);
 }
 
 NotificationType GameElement::getEventType()
 {
-	return myEvent->getEventType();
+	NotificationType eventType = myEvent->getEventType();
+	this->removeEvent();
+	return eventType;
+}
+
+void GameElement::startEvent()
+{
+	if (this->myEvent != nullptr) 
+	{ 
+		std::cout << myEvent->readNotification()->getNotificationMessage() << std::endl; 
+	}
 }
 
 void GameElement::removeEvent()

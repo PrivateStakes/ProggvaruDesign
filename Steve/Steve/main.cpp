@@ -1,11 +1,13 @@
 #include <iostream>
 #include <string>
 #include "Game.h"
+#include "EventManager.h"
 
 int main()
 {
 	Game game;
 	InputSanitizer inputSanitizer;
+	EventManager eventManager;
 
 	game.createScene();
 	game.createScene();
@@ -16,6 +18,7 @@ int main()
 		for (int j = 0; j < game.randomNumberGenerator(1, 5); j++)
 		{
 			game.getAllScenes()[i]->addItemInScene(&game);
+			game.getAllScenes()[i]->getItemFromScene_index(j)->setEventManager(&eventManager);
 		}
 	}
 

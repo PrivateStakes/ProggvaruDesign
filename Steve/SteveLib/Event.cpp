@@ -40,6 +40,9 @@ bool Event::createNotification(NotificationType notificationType)
 
 	switch (notificationType)
 	{
+	case NotificationType::elementMoved:
+		notificationMessage = "An object move from one scene to another";
+		break;
 	case NotificationType::addNewElement:
 		notificationMessage = "A new thing appeared in a scene";
 		break;
@@ -49,11 +52,23 @@ bool Event::createNotification(NotificationType notificationType)
 	case NotificationType::addObjectToInventory:
 		notificationMessage = "You added the item to your inventory";
 		break;
-	case NotificationType::elementMoved:
-		notificationMessage = "Something moved to another scene";
-		break;
 	case NotificationType::elementOptionsExtended:
 		notificationMessage = "There are now more interactions avaiable for something";
+		break;
+	case NotificationType::elementInSceneMoved:
+		notificationMessage = "Something moved to another scene";
+		break;
+	case NotificationType::elementOpened:
+		notificationMessage = "An object in the scene was opened";
+		break;
+	case NotificationType::elementTasted:
+		notificationMessage = "The taste of the object gave you some useful information";
+		break;
+	case NotificationType::elementTurnedOn:
+		notificationMessage = "When the object was turned on it gave some clues";
+		break;
+	case NotificationType::elementTurnedOff:
+		notificationMessage = "An object in the scene was turned off";
 		break;
 	case NotificationType::none:
 		notificationMessage = "Unknown Event occured: event set to 'none'";

@@ -4,6 +4,7 @@
 #include "InputSanitizer.h"
 #include "Notification.h"
 #include "Secretary.h"
+#include "EventManager.h"
 #include <random>
 
 Game::Game() : 
@@ -116,7 +117,6 @@ void Game::updateEventsInScene(Scene* input)
 		if (input->getItemFromScene_index(i)->hasNotification())
 		{
 			secretary->addNotification(input->getItemFromScene_index(i)->getNotification()->getNotificationMessage());
-			input->getItemFromScene_index(i)->removeEvent();
 
 			bool elementAdded = false;
 
@@ -217,7 +217,6 @@ void Game::handleInteractions(InputSanitizer input, int index)
 			std::string message = getCurrentScene()->getItemFromScene_index(index)->returnInteractionMessage();
 			std::cout << message << std::endl;
 		}
-
 		updateEvents();
 		secretary->getAllNotifcations();
 		std::cout << "---------------------------------------" << std::endl;

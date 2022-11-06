@@ -12,7 +12,7 @@ GameObjectRepos::~GameObjectRepos()
 {
 	for (int i = 0; i < gameObjectHolder.size(); i++)
 	{
-		delete gameObjectHolder[i];
+		if (gameObjectHolder[i] != nullptr) delete gameObjectHolder[i];
 		gameObjectHolder[i] = nullptr;
 	}
 }
@@ -48,7 +48,8 @@ void GameObjectRepos::addGameObject(Game* input)
 
 void GameObjectRepos::addGameObject(Game* input, GameObject* gameObj)
 {
-	gameObjectHolder.push_back(new GameObject(input, gameObj));
+	//gameObjectHolder.push_back(new GameObject(input, gameObj));
+	gameObjectHolder.push_back(gameObj);
 	//gameObjectHolder.back()->generateEvent(eventManager, gameObj->getEventType());
 	gameObjectHolder.back()->setId(input->getIdIncrementTracker());
 	input->setIdIncrementTracker(input->getIdIncrementTracker() + 1);
@@ -58,13 +59,14 @@ void GameObjectRepos::removeGameObject_index(Game* input, int index)
 {
 	if (index < gameObjectHolder.size())
 	{
-		delete gameObjectHolder[index];
+		//delete gameObjectHolder[index];
 		gameObjectHolder[index] = nullptr;
-		gameObjectHolder[index] = new GameObject(input, gameObjectHolder.back());
+		gameObjectHolder[index] = gameObjectHolder.back();//new GameObject(input, gameObjectHolder.back());
+
 		//gameObjectHolder[index]->generateEvent(eventManager, NotificationType(gameObjectHolder.back()->getEventType()));
 		//NOTE: events need to be handled before removal to avoid circle-ref; can't be bothered to fix it
 
-		delete gameObjectHolder.back();
+		//delete gameObjectHolder.back();
 		gameObjectHolder.back() = nullptr;
 		gameObjectHolder.pop_back();
 	}

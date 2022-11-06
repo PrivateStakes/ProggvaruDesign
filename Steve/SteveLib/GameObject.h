@@ -12,6 +12,7 @@ class GameObject : public GameElement, public InteractionType
 {
 private:
 	std::string interactionMessage;
+	EventManager* eventManager;
 	Game* myGame;
 	bool isOn = false;
 
@@ -24,6 +25,7 @@ public:
 
 	std::vector<std::string> listInteractionTypes();
 	string returnInteractionMessage();
+	void setEventManager(EventManager* eventManager);
 	void startInteraction(string object, string theInteractionType);
 	void listCurrentInteractionOptions();
 	void setCurrentInteractionOptions(string theOptions);

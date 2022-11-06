@@ -7,5 +7,10 @@ enum class NotificationType
 	addNewElement,
 	addNewScene,
 	addObjectToInventory,
+	elementInSceneMoved,
+	elementTasted,
+	elementOpened,
+	elementTurnedOn,
+	elementTurnedOff,
 	none
 };

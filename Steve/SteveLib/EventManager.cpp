@@ -21,12 +21,13 @@ EventManager::~EventManager()
 Event* EventManager::createEvent(NotificationType eventType)
 {
 	eventContainer.push_back(new Event(eventType));
-	return eventContainer[eventContainer.size()-1];
+	return eventContainer.back();
 }
 
 Notification* EventManager::getNotification(int index)
 {
-	return eventContainer[index]->readNotification();
+	if (eventContainer[index] != nullptr) return eventContainer[index]->readNotification();
+	else return nullptr;
 }
 
 void EventManager::listAffectedEvents(std::string eventCondition)
@@ -40,7 +41,6 @@ void EventManager::triggerEvents(NotificationType eventCondition)
 	{
 		if (eventCondition == eventContainer[i]->getEventType()) eventContainer[i]->createNotification(eventCondition);
 	}
-
 }
 
 bool EventManager::triggerSpecificElement(int input)
